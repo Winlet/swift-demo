@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04076CDB2063525E00E9C8EE /* MyMusicHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04076CDA2063525E00E9C8EE /* MyMusicHomeTableViewController.swift */; };
 		041F2C6720626BD300B158A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C6620626BD300B158A6 /* AppDelegate.swift */; };
 		041F2C6920626BD300B158A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C6820626BD300B158A6 /* ViewController.swift */; };
 		041F2C6C20626BD300B158A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041F2C6A20626BD300B158A6 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04076CDA2063525E00E9C8EE /* MyMusicHomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMusicHomeTableViewController.swift; sourceTree = "<group>"; };
 		041F2C6320626BD300B158A6 /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		041F2C6620626BD300B158A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041F2C6820626BD300B158A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04076CD52063510F00E9C8EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04076CD72063514700E9C8EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04076CDA2063525E00E9C8EE /* MyMusicHomeTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04076CD92063520C00E9C8EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		041F2C5A20626BD300B158A6 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +121,9 @@
 		041F2C6520626BD300B158A6 /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				04076CD92063520C00E9C8EE /* Model */,
+				04076CD72063514700E9C8EE /* Controller */,
+				04076CD52063510F00E9C8EE /* View */,
 				041F2C6620626BD300B158A6 /* AppDelegate.swift */,
 				041F2C6820626BD300B158A6 /* ViewController.swift */,
 				041F2C6A20626BD300B158A6 /* Main.storyboard */,
@@ -259,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04076CDB2063525E00E9C8EE /* MyMusicHomeTableViewController.swift in Sources */,
 				041F2C6920626BD300B158A6 /* ViewController.swift in Sources */,
 				041F2C6720626BD300B158A6 /* AppDelegate.swift in Sources */,
 			);
