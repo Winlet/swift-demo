@@ -15,6 +15,10 @@
 		041F2C7120626BD300B158A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041F2C6F20626BD300B158A6 /* LaunchScreen.storyboard */; };
 		041F2C7C20626BD300B158A6 /* demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C7B20626BD300B158A6 /* demoTests.swift */; };
 		041F2C8720626BD300B158A6 /* demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C8620626BD300B158A6 /* demoUITests.swift */; };
+		04F2B42220649F2B00F642C3 /* SearchMusicHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */; };
+		04F2B4242064A1A400F642C3 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4232064A1A400F642C3 /* Music.swift */; };
+		04F2B4292064AC8E00F642C3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4282064AC8E00F642C3 /* NetworkManager.swift */; };
+		04F2B42C2064ACDB00F642C3 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B42B2064ACDB00F642C3 /* StoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		041F2C8220626BD300B158A6 /* demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041F2C8620626BD300B158A6 /* demoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demoUITests.swift; sourceTree = "<group>"; };
 		041F2C8820626BD300B158A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicHomeViewController.swift; sourceTree = "<group>"; };
+		04F2B4232064A1A400F642C3 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		04F2B4282064AC8E00F642C3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		04F2B42B2064ACDB00F642C3 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				04076CDA2063525E00E9C8EE /* MyMusicHomeTableViewController.swift */,
+				04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -94,6 +103,7 @@
 		04076CD92063520C00E9C8EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04F2B4232064A1A400F642C3 /* Music.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +131,8 @@
 		041F2C6520626BD300B158A6 /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				04F2B42A2064ACAF00F642C3 /* StoreManager */,
+				04F2B4272064AC4F00F642C3 /* NetManager */,
 				04076CD92063520C00E9C8EE /* Model */,
 				04076CD72063514700E9C8EE /* Controller */,
 				04076CD52063510F00E9C8EE /* View */,
@@ -150,6 +162,22 @@
 				041F2C8820626BD300B158A6 /* Info.plist */,
 			);
 			path = demoUITests;
+			sourceTree = "<group>";
+		};
+		04F2B4272064AC4F00F642C3 /* NetManager */ = {
+			isa = PBXGroup;
+			children = (
+				04F2B4282064AC8E00F642C3 /* NetworkManager.swift */,
+			);
+			path = NetManager;
+			sourceTree = "<group>";
+		};
+		04F2B42A2064ACAF00F642C3 /* StoreManager */ = {
+			isa = PBXGroup;
+			children = (
+				04F2B42B2064ACDB00F642C3 /* StoreManager.swift */,
+			);
+			path = StoreManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F2B4292064AC8E00F642C3 /* NetworkManager.swift in Sources */,
+				04F2B42C2064ACDB00F642C3 /* StoreManager.swift in Sources */,
 				04076CDB2063525E00E9C8EE /* MyMusicHomeTableViewController.swift in Sources */,
+				04F2B42220649F2B00F642C3 /* SearchMusicHomeViewController.swift in Sources */,
+				04F2B4242064A1A400F642C3 /* Music.swift in Sources */,
 				041F2C6920626BD300B158A6 /* ViewController.swift in Sources */,
 				041F2C6720626BD300B158A6 /* AppDelegate.swift in Sources */,
 			);
