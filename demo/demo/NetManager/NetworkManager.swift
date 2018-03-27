@@ -7,7 +7,12 @@
 //
 
 import UIKit
+import Alamofire
 
 class NetworkManager: NSObject {
 
+    func test() -> NSString {
+        
+        return  NSString();
+    }
 }

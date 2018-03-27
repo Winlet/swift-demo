@@ -15,6 +15,7 @@
 		041F2C7120626BD300B158A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041F2C6F20626BD300B158A6 /* LaunchScreen.storyboard */; };
 		041F2C7C20626BD300B158A6 /* demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C7B20626BD300B158A6 /* demoTests.swift */; };
 		041F2C8720626BD300B158A6 /* demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C8620626BD300B158A6 /* demoUITests.swift */; };
+		0460197B2069E68E008EF434 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0460197A2069E68E008EF434 /* Alamofire.framework */; };
 		04F2B42220649F2B00F642C3 /* SearchMusicHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */; };
 		04F2B4242064A1A400F642C3 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4232064A1A400F642C3 /* Music.swift */; };
 		04F2B4292064AC8E00F642C3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4282064AC8E00F642C3 /* NetworkManager.swift */; };
@@ -53,6 +54,7 @@
 		041F2C8220626BD300B158A6 /* demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041F2C8620626BD300B158A6 /* demoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demoUITests.swift; sourceTree = "<group>"; };
 		041F2C8820626BD300B158A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0460197A2069E68E008EF434 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicHomeViewController.swift; sourceTree = "<group>"; };
 		04F2B4232064A1A400F642C3 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		04F2B4282064AC8E00F642C3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0460197B2069E68E008EF434 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +114,7 @@
 		041F2C5A20626BD300B158A6 = {
 			isa = PBXGroup;
 			children = (
+				046019792069E670008EF434 /* Frameworks */,
 				041F2C6520626BD300B158A6 /* demo */,
 				041F2C7A20626BD300B158A6 /* demoTests */,
 				041F2C8520626BD300B158A6 /* demoUITests */,
@@ -162,6 +166,14 @@
 				041F2C8820626BD300B158A6 /* Info.plist */,
 			);
 			path = demoUITests;
+			sourceTree = "<group>";
+		};
+		046019792069E670008EF434 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0460197A2069E68E008EF434 /* Alamofire.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		04F2B4272064AC4F00F642C3 /* NetManager */ = {
@@ -487,6 +499,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.u-nas.demo";
@@ -501,6 +517,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.u-nas.demo";
