@@ -32,6 +32,10 @@ class SearchMusicHomeViewController: UIViewController {
         self.titleItem.title = "搜索";
         self.title = "搜索";
         self.tableview.tableFooterView = UIView();
+        var page = 1;
+        var num = 20;
+        
+       print(NetworkManager().test("liu",&page,&num));
     }
     
     // MARK: - Navigation

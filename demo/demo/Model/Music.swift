@@ -9,6 +9,7 @@
 import UIKit
 
 class Music: NSObject {
+    var singeID:NSString?;
     var name:NSString?;
     var singer:NSString?;
     
