@@ -16,16 +16,21 @@ class NetworkManager: NSObject {
     public func test(_ word:NSString,_ page:inout Int,_ number:inout Int) -> NSString {
         page = 1;
         number = 20;
-        let httpRequest = "https://c.y.qq.com/soso/fcgi-bin/client_search_cp?ct=24&qqmusic_ver=1298&new_json=1&remoteplace=txt.yqq.center&searchid=37602803789127241&t=0&aggr=1&cr=1&catZhida=1&lossless=0&flag_qc=0&p=\(page)&n=\(number)&w=\(word)&g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0";
+       let wordTemp = self.urlEncoded(string: word);
+        let httpRequest = "https://c.y.qq.com/soso/fcgi-bin/client_search_cp?ct=24&qqmusic_ver=1298&new_json=1&remoteplace=txt.yqq.center&searchid=37602803789127241&t=0&aggr=1&cr=1&catZhida=1&lossless=0&flag_qc=0&p=\(page)&n=\(number)&w=\(wordTemp)&g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0";
         Alamofire.request(httpRequest).response { response in
-            print("Request: \(response.request)")
-            print("Response: \(response.response)")
-            print("Error: \(response.error)")
-            
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)")
+    
+//            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+//                print("Data: \(utf8Text)")
+//            }
+            let data = [self .dataToDictionary(data: response.data!)];
+            let dataD = data.first;
+            let dataDic = dataD!!["data"] as? NSDictionary
+            let listMusic = Music().transfromQQMusic(dic: dataDic!);
+//            var music = listMusic.object(at: 0);
+            for music in listMusic{
+            print((music as! Music).name!);
             }
-            
         }
 //            .responseJSON { response in
 //
@@ -40,6 +45,30 @@ class NetworkManager: NSObject {
 //        }
         
         return  NSString();
+    }
+    
+    func dataToDictionary(data:Data) ->Dictionary<String,Any>?{
+        do{
+        let json = try JSONSerialization.jsonObject(with:data, options:.mutableContainers)
+        let dic = json as! Dictionary<String,Any>
+            return dic;
+            
+        }catch _ {
+            print("失败")
+            return nil;
+        }
+    }
+    
+    //将原始的url编码为合法的url
+    func urlEncoded(string:NSString) -> String {
+        let encodeUrlString = string.addingPercentEncoding(withAllowedCharacters:
+            .urlQueryAllowed)
+        return encodeUrlString ?? ""
+    }
+    
+    //将编码后的url转换回原始的url
+    func urlDecoded(string:NSString) -> String {
+        return string.removingPercentEncoding ?? ""
     }
     
 }

@@ -35,7 +35,7 @@ class SearchMusicHomeViewController: UIViewController {
         var page = 1;
         var num = 20;
         
-       print(NetworkManager().test("liu",&page,&num));
+       print(NetworkManager().test("张学友",&page,&num));
     }
     
     // MARK: - Navigation
