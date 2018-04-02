@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iWn-Lh-XCp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iWn-Lh-XCp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,6 +31,10 @@
         <scene sceneID="qJH-ix-kpK">
             <objects>
                 <viewController id="9NO-6Q-rh3" customClass="SearchMusicHomeViewController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cR1-VG-Wlv"/>
+                        <viewControllerLayoutGuide type="bottom" id="Glq-cN-3Ra"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xP9-p5-V9u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,15 +53,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="era-br-NgO" firstAttribute="top" secondItem="xkJ-Dz-cJ3" secondAttribute="top" id="BVX-1V-hQw"/>
-                            <constraint firstItem="lsc-QS-UQo" firstAttribute="leading" secondItem="xkJ-Dz-cJ3" secondAttribute="leading" id="Cg1-Ed-LTc"/>
+                            <constraint firstItem="era-br-NgO" firstAttribute="top" secondItem="cR1-VG-Wlv" secondAttribute="bottom" id="BVX-1V-hQw"/>
+                            <constraint firstItem="lsc-QS-UQo" firstAttribute="leading" secondItem="xP9-p5-V9u" secondAttribute="leading" id="Cg1-Ed-LTc"/>
                             <constraint firstItem="lsc-QS-UQo" firstAttribute="top" secondItem="era-br-NgO" secondAttribute="bottom" id="EXL-NW-7tf"/>
-                            <constraint firstItem="xkJ-Dz-cJ3" firstAttribute="bottom" secondItem="lsc-QS-UQo" secondAttribute="bottom" id="KSa-fI-LCP"/>
-                            <constraint firstItem="era-br-NgO" firstAttribute="leading" secondItem="xkJ-Dz-cJ3" secondAttribute="leading" id="jky-yR-53s"/>
-                            <constraint firstItem="era-br-NgO" firstAttribute="trailing" secondItem="xkJ-Dz-cJ3" secondAttribute="trailing" id="jsD-mT-Sdu"/>
-                            <constraint firstItem="xkJ-Dz-cJ3" firstAttribute="trailing" secondItem="lsc-QS-UQo" secondAttribute="trailing" id="qXD-dX-jLw"/>
+                            <constraint firstItem="Glq-cN-3Ra" firstAttribute="top" secondItem="lsc-QS-UQo" secondAttribute="bottom" id="KSa-fI-LCP"/>
+                            <constraint firstItem="era-br-NgO" firstAttribute="leading" secondItem="xP9-p5-V9u" secondAttribute="leading" id="jky-yR-53s"/>
+                            <constraint firstItem="era-br-NgO" firstAttribute="trailing" secondItem="xP9-p5-V9u" secondAttribute="trailing" id="jsD-mT-Sdu"/>
+                            <constraint firstAttribute="trailing" secondItem="lsc-QS-UQo" secondAttribute="trailing" id="qXD-dX-jLw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="xkJ-Dz-cJ3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="搜索" id="ZST-0d-9dP"/>
                     <connections>

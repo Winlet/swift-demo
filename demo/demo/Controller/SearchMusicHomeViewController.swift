@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchMusicHomeViewController: UIViewController {
+class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UISearchBarDelegate {
 
     @IBOutlet weak var titleItem: UITabBarItem!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -32,12 +32,18 @@ class SearchMusicHomeViewController: UIViewController {
         self.titleItem.title = "搜索";
         self.title = "搜索";
         self.tableview.tableFooterView = UIView();
+        self.searchBar.delegate = self;
+        self.tableview.delegate = self;
+        
         var page = 1;
         var num = 20;
-        
-       print(NetworkManager().test("张学友",&page,&num));
+       print (NetworkManager().searchSong(keyword: "张学友", page: &page, number: &num));
+       
     }
     
-    // MARK: - Navigation
-
+    // MARK: - SearchBarDelegate
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchBar.text!);
+    }
+    
 }
