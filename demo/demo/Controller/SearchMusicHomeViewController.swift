@@ -34,16 +34,35 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UISear
         self.tableview.tableFooterView = UIView();
         self.searchBar.delegate = self;
         self.tableview.delegate = self;
+
+        let gesture = UITapGestureRecognizer(target:self ,action: #selector(SearchMusicHomeViewController.handleTap));
+        self.view.addGestureRecognizer(gesture)
         
-        var page = 1;
-        var num = 20;
-       print (NetworkManager().searchSong(keyword: "张学友", page: &page, number: &num));
-       
     }
     
+    
+    @objc func handleTap() {
+        self.searchBar.resignFirstResponder();
+    }
     // MARK: - SearchBarDelegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchBar.text!);
+//        print(searchBar.text!);
     }
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        var page = 1;
+        var num = 20;
+        let text = searchBar.text!
+        print(text);
+        print (NetworkManager().searchSong(keyword:text as NSString, page: &page, number: &num));
+        searchBar.resignFirstResponder()
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.searchBar.resignFirstResponder();
+    }
+//    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        self.searchBar.resignFirstResponder()
+//    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.searchBar.resignFirstResponder();
+    }
 }

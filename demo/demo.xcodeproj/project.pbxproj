@@ -15,8 +15,8 @@
 		041F2C7120626BD300B158A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041F2C6F20626BD300B158A6 /* LaunchScreen.storyboard */; };
 		041F2C7C20626BD300B158A6 /* demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C7B20626BD300B158A6 /* demoTests.swift */; };
 		041F2C8720626BD300B158A6 /* demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C8620626BD300B158A6 /* demoUITests.swift */; };
-		04B5E1E220723CD2001100DC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0460197A2069E68E008EF434 /* Alamofire.framework */; };
-		04B5E1E320723CD2001100DC /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0460197A2069E68E008EF434 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		043B3D712074748B003BCE6B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042F5CA52074742300537332 /* Alamofire.framework */; };
+		043B3D722074748B003BCE6B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 042F5CA52074742300537332 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04F2B42220649F2B00F642C3 /* SearchMusicHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */; };
 		04F2B4242064A1A400F642C3 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4232064A1A400F642C3 /* Music.swift */; };
 		04F2B4292064AC8E00F642C3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4282064AC8E00F642C3 /* NetworkManager.swift */; };
@@ -41,13 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		04B5E1E420723CD2001100DC /* Embed Frameworks */ = {
+		043B3D732074748B003BCE6B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				04B5E1E320723CD2001100DC /* Alamofire.framework in Embed Frameworks */,
+				043B3D722074748B003BCE6B /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,7 +69,7 @@
 		041F2C8220626BD300B158A6 /* demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041F2C8620626BD300B158A6 /* demoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demoUITests.swift; sourceTree = "<group>"; };
 		041F2C8820626BD300B158A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0460197A2069E68E008EF434 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		042F5CA52074742300537332 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicHomeViewController.swift; sourceTree = "<group>"; };
 		04F2B4232064A1A400F642C3 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		04F2B4282064AC8E00F642C3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04B5E1E220723CD2001100DC /* Alamofire.framework in Frameworks */,
+				043B3D712074748B003BCE6B /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +129,6 @@
 		041F2C5A20626BD300B158A6 = {
 			isa = PBXGroup;
 			children = (
-				046019792069E670008EF434 /* Frameworks */,
 				041F2C6520626BD300B158A6 /* demo */,
 				041F2C7A20626BD300B158A6 /* demoTests */,
 				041F2C8520626BD300B158A6 /* demoUITests */,
@@ -150,6 +149,7 @@
 		041F2C6520626BD300B158A6 /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				042F5C992074731300537332 /* Framework */,
 				04F2B42A2064ACAF00F642C3 /* StoreManager */,
 				04F2B4272064AC4F00F642C3 /* NetManager */,
 				04076CD92063520C00E9C8EE /* Model */,
@@ -183,12 +183,12 @@
 			path = demoUITests;
 			sourceTree = "<group>";
 		};
-		046019792069E670008EF434 /* Frameworks */ = {
+		042F5C992074731300537332 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				0460197A2069E68E008EF434 /* Alamofire.framework */,
+				042F5CA52074742300537332 /* Alamofire.framework */,
 			);
-			path = Frameworks;
+			path = Framework;
 			sourceTree = "<group>";
 		};
 		04F2B4272064AC4F00F642C3 /* NetManager */ = {
@@ -217,7 +217,7 @@
 				041F2C5F20626BD300B158A6 /* Sources */,
 				041F2C6020626BD300B158A6 /* Frameworks */,
 				041F2C6120626BD300B158A6 /* Resources */,
-				04B5E1E420723CD2001100DC /* Embed Frameworks */,
+				043B3D732074748B003BCE6B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -513,13 +513,12 @@
 		041F2C8C20626BD300B158A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3BE22FUAD6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
+					"$(PROJECT_DIR)/demo/Framework",
 				);
 				INFOPLIST_FILE = demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -534,13 +533,12 @@
 		041F2C8D20626BD300B158A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3BE22FUAD6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
+					"$(PROJECT_DIR)/demo/Framework",
 				);
 				INFOPLIST_FILE = demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
