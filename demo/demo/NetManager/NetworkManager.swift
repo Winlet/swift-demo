@@ -8,16 +8,16 @@
 
 import UIKit
 import Alamofire
-
+import CryptoSwift
 
 
 class NetworkManager: NSObject {
 
-    public func searchSong(keyword word:NSString,page page:inout Int,number number:inout Int) -> NSString {
-        page = 1;
-        number = 20;
+    public func searchSongFromQQMusic(keyword word:NSString,page pageT:inout Int,number numberT:inout Int) -> NSString {
+        pageT = 1;
+        numberT = 20;
        let wordTemp = self.urlEncoded(string: word);
-        let httpRequest = "https://c.y.qq.com/soso/fcgi-bin/client_search_cp?ct=24&qqmusic_ver=1298&new_json=1&remoteplace=txt.yqq.center&searchid=37602803789127241&t=0&aggr=1&cr=1&catZhida=1&lossless=0&flag_qc=0&p=\(page)&n=\(number)&w=\(wordTemp)&g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0";
+        let httpRequest = "https://c.y.qq.com/soso/fcgi-bin/client_search_cp?ct=24&qqmusic_ver=1298&new_json=1&remoteplace=txt.yqq.center&searchid=37602803789127241&t=0&aggr=1&cr=1&catZhida=1&lossless=0&flag_qc=0&p=\(pageT)&n=\(numberT)&w=\(wordTemp)&g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0";
         Alamofire.request(httpRequest).response { response in
 
             let data = [self .dataToDictionary(data: response.data!)];
@@ -43,6 +43,19 @@ class NetworkManager: NSObject {
         
         return  NSString();
     }
+    func searchSongFrom163Music(keyword word:NSString) {
+        let httpRequest = "https://music.163.com/#/search/m/?s=123";
+        Alamofire.request(httpRequest).response{ response in
+            let data = [self .dataToDictionary(data: response.data!)];
+            let dataD = data.first;
+            let dataDic = dataD!!["data"] as? NSDictionary
+            let listMusic = Music().transfromQQMusic(dic: dataDic!);
+            
+            for music in listMusic{
+                print((music as! Music).name!);
+            }
+        }
+    }
     
     func dataToDictionary(data:Data) ->Dictionary<String,Any>?{
         do{
@@ -67,5 +80,8 @@ class NetworkManager: NSObject {
     func urlDecoded(string:NSString) -> String {
         return string.removingPercentEncoding ?? ""
     }
+  
+
+
     
 }

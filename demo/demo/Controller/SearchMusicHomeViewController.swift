@@ -53,7 +53,8 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UISear
         var num = 20;
         let text = searchBar.text!
         print(text);
-        print (NetworkManager().searchSong(keyword:text as NSString, page: &page, number: &num));
+//        print (NetworkManager().searchSongFromQQMusic(keyword:text as NSString, page: &page, number: &num));
+        print(NetworkManager().searchSongFrom163Music(keyword:text as NSString));
         searchBar.resignFirstResponder()
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
