@@ -47,9 +47,14 @@ class NetworkManager: NSObject {
         let httpRequest = "https://music.163.com/#/search/m/?s=123";
         Alamofire.request(httpRequest).response{ response in
             let data = [self .dataToDictionary(data: response.data!)];
-            let dataD = data.first;
-            let dataDic = dataD!!["data"] as? NSDictionary
-            let listMusic = Music().transfromQQMusic(dic: dataDic!);
+            var dataD = data.first
+            var dataDic : NSDictionary = NSDictionary();
+            if dataD != nil {
+//                dataDic = dataD!!["data"] as! NSDictionary
+                dataDic = dataD!!["data"] as! NSDictionary
+            }
+//                       let  dataDic = dataD!!["data"] as? NSDictionary
+            let listMusic = Music().transfromQQMusic(dic: dataDic);
             
             for music in listMusic{
                 print((music as! Music).name!);
