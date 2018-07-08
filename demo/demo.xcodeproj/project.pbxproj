@@ -15,10 +15,11 @@
 		041F2C7120626BD300B158A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041F2C6F20626BD300B158A6 /* LaunchScreen.storyboard */; };
 		041F2C7C20626BD300B158A6 /* demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C7B20626BD300B158A6 /* demoTests.swift */; };
 		041F2C8720626BD300B158A6 /* demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C8620626BD300B158A6 /* demoUITests.swift */; };
-		043B3D712074748B003BCE6B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042F5CA52074742300537332 /* Alamofire.framework */; };
-		043B3D722074748B003BCE6B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 042F5CA52074742300537332 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		045702662079C2C0006BF094 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045702652079C2C0006BF094 /* extensions.swift */; };
 		045702692079C2FB006BF094 /* libSystem.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 045702682079C2FB006BF094 /* libSystem.tbd */; };
+		047A1D9E20F0B5D1007EE2AE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */; };
+		047A1D9F20F0B5E7007EE2AE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */; };
+		047A1DA020F0B5E7007EE2AE /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04ED050320ECC9F000739D1D /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED050220ECC9F000739D1D /* DownloadManager.swift */; };
 		04F2B42220649F2B00F642C3 /* SearchMusicHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */; };
 		04F2B4242064A1A400F642C3 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4232064A1A400F642C3 /* Music.swift */; };
@@ -45,13 +46,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		043B3D732074748B003BCE6B /* Embed Frameworks */ = {
+		047A1D9C20F0B533007EE2AE /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				043B3D722074748B003BCE6B /* Alamofire.framework in Embed Frameworks */,
+				047A1DA020F0B5E7007EE2AE /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,9 +74,9 @@
 		041F2C8220626BD300B158A6 /* demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041F2C8620626BD300B158A6 /* demoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demoUITests.swift; sourceTree = "<group>"; };
 		041F2C8820626BD300B158A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		042F5CA52074742300537332 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		045702652079C2C0006BF094 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		045702682079C2FB006BF094 /* libSystem.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libSystem.tbd; path = usr/lib/libSystem.tbd; sourceTree = SDKROOT; };
+		047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		04ED050220ECC9F000739D1D /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicHomeViewController.swift; sourceTree = "<group>"; };
 		04F2B4232064A1A400F642C3 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
@@ -92,8 +93,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				045702692079C2FB006BF094 /* libSystem.tbd in Frameworks */,
-				043B3D712074748B003BCE6B /* Alamofire.framework in Frameworks */,
+				047A1D9E20F0B5D1007EE2AE /* Alamofire.framework in Frameworks */,
 				B3E41FFE25B7C36BB63BC3A1 /* Pods_demo.framework in Frameworks */,
+				047A1D9F20F0B5E7007EE2AE /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +203,7 @@
 		042F5C992074731300537332 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				042F5CA52074742300537332 /* Alamofire.framework */,
+				047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -260,9 +262,9 @@
 				041F2C5F20626BD300B158A6 /* Sources */,
 				041F2C6020626BD300B158A6 /* Frameworks */,
 				041F2C6120626BD300B158A6 /* Resources */,
-				043B3D732074748B003BCE6B /* Embed Frameworks */,
 				D0D765DD7ACD245F4233A1EB /* [CP] Embed Pods Frameworks */,
 				5146809BB7DCAD9905F4F317 /* [CP] Copy Pods Resources */,
+				047A1D9C20F0B533007EE2AE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -605,6 +607,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -625,6 +628,7 @@
 				INFOPLIST_FILE = demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.u-nas.music";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -646,6 +650,7 @@
 				INFOPLIST_FILE = demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.u-nas.music";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

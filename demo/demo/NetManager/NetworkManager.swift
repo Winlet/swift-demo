@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import CryptoSwift
+//import CryptoSwift
 
 
 class NetworkManager: NSObject {

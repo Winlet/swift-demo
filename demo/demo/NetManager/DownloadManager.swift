@@ -13,7 +13,11 @@ class DownloadManager: NSObject {
 
     public func downloadSongForUrl(url:NSString , suc:()->Void , err:(NSError)->Void){
 //        http://music.163.com/song/media/outer/url?id=574921549.mp3
+        var urlS =  "http://music.163.com/song/media/outer/url?id=574921549.mp3";
         
+        Alamofire.download(urlS) { (<#URL#>, <#HTTPURLResponse#>) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
+            <#code#>
+        }
         let error = NSError();
         err(error);
     }
