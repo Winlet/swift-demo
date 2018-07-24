@@ -19,6 +19,11 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UISear
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
+        DownloadManager().downloadSongForUrl(url:"", suc: {
+            
+        }) { (error) in
+            
+        }
         // Do any additional setup after loading the view.
     }
 

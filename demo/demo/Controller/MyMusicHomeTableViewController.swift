@@ -19,7 +19,6 @@ class MyMusicHomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,7 +81,19 @@ class MyMusicHomeTableViewController: UITableViewController {
     }
     // MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true);
+        switch indexPath.section {
+        case 0:
+            if indexPath.row == 0{
+                self.performSegue(withIdentifier: "localDetail", sender: nil);
+            }else{
+                NSLog("asd");
+            }
+        case 1:
+            NSLog("asd");
+        default:
+            break;
+        }
     }
    
     
