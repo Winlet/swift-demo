@@ -9,13 +9,13 @@
 import UIKit
 
 class Music: NSObject {
-    var singeID:NSString?;
-    var name:NSString?;
-    var singer:NSString?;
-    var songUrl:NSString?;
-    var songTime:NSString?;
+    var singeID:String?;
+    var name:String?;
+    var singer:String?;
+    var songUrl:String?;
+    var songTime:String?;
     
-    func initMusic(name:NSString,singer:NSString) -> Music {
+    func initMusic(name:String,singer:String) -> Music {
         let music = Music();
         music.name = name;
         music.singer = singer;
@@ -28,10 +28,10 @@ class Music: NSObject {
         let list = (dic["song"] as! NSDictionary)["list"] as!NSMutableArray;
         for song in list {
             let music = Music();
-            music.singeID = (song as! NSDictionary).object(forKey: "id") as? NSString;
-            music.name = (song as! NSDictionary).object(forKey: "title") as? NSString;
-            music.songUrl = (song as! NSDictionary).object(forKey: "url") as? NSString;
-            music.songTime = (song as! NSDictionary).object(forKey: "time_public") as? NSString;
+            music.singeID = (song as! NSDictionary).object(forKey: "id") as? String ;
+            music.name = (song as! NSDictionary).object(forKey: "title") as? String;
+            music.songUrl = (song as! NSDictionary).object(forKey: "url") as? String;
+            music.songTime = (song as! NSDictionary).object(forKey: "time_public") as? String;
             listArray.add(music);
         }
         

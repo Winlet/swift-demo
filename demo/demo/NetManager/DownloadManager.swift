@@ -33,7 +33,7 @@ class DownloadManager: NSObject {
         //下载存储路径
         let destination: DownloadRequest.DownloadFileDestination =  {_,response in
             let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first
-            let fileUrl = url.appendingPathComponent("怪咖")
+            let fileUrl = url.appendingPathComponent("怪咖.mp3")
             print(fileUrl)
             return (fileUrl,[.removePreviousFile, .createIntermediateDirectories] )
         }

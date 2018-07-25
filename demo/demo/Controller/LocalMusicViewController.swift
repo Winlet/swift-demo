@@ -11,11 +11,23 @@ import UIKit
 class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var headView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    var musicShowArray = NSMutableArray();
+//    var musicShowArray = NSMutableArray();
     
+    lazy var musicShowArray : NSMutableArray = {
+        let array = NSMutableArray();
+        let ducumentPath = NSHomeDirectory() + "/Documents"
+        let localPath = ducumentPath + "/Downloads"
+        let fileManager = FileManager.default
+        var files = fileManager.subpaths(atPath: localPath)
+        for index in files!{
+         let music = Music().initMusic(name:index, singer:"123");
+            array.add(music);
+        }
+        return array;
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initUI();
         // Do any additional setup after loading the view.
     }
 
@@ -25,7 +37,7 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
     }
     //MARK: -delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return musicShowArray.count;
+        return  self.musicShowArray.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,6 +51,7 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
   
