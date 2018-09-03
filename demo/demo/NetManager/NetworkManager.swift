@@ -12,8 +12,32 @@ import Alamofire
 
 
 class NetworkManager: NSObject {
+    
+    public func searchSong(keyword word:String,suc:@escaping (NSMutableArray)->Void,err:(NSError)->Void){
+//        print (NetworkManager().searchSongFromQQMusic(keyword:text as NSString, page: &page, number: &num));
+//        print(NetworkManager().searchSongFrom163Music(keyword:text as NSString));
+//        var page = 1;
+//        var num = 20;
+//        self.searchSongFromQQMusic(keyword: word, page: &page, number: &num, suc: { (listMusic) in
+//            for music in listMusic{
+//                print((music as! Music).name!);
+//            }
+//            suc(listMusic);
+//        }) { (error) in
+//            NSLog("%@",error);
+//        }
+        
+        self.searchSongFrom163Music(keyword: word, suc: { (listMusic) in
+            for music in listMusic{
+                print((music as! Music).name!);
+            }
+            suc(listMusic);
+        }) { (error) in
+            NSLog("%@",error);
+        };
+    }
 
-    public func searchSongFromQQMusic(keyword word:NSString,page pageT:inout Int,number numberT:inout Int) -> NSString {
+    public func searchSongFromQQMusic(keyword word:String,page pageT:inout Int,number numberT:inout Int ,suc: @escaping (NSMutableArray)->Void , err:(NSError)->Void) {
         pageT = 1;
         numberT = 20;
        let wordTemp = self.urlEncoded(string: word);
@@ -25,9 +49,10 @@ class NetworkManager: NSObject {
             let dataDic = dataD!!["data"] as? NSDictionary
             let listMusic = Music().transfromQQMusic(dic: dataDic!);
 
-            for music in listMusic{
-            print((music as! Music).name!);
-            }
+            suc(listMusic);
+//            for music in listMusic{
+//            print((music as! Music).name!);
+//            }
         }
 //            .responseJSON { response in
 //
@@ -40,11 +65,11 @@ class NetworkManager: NSObject {
 //                print("JSON: \(JSON)") //具体如何解析json内容可看下方“响应处理”部分
 //            }
 //        }
-        
-        return  NSString();
     }
-    func searchSongFrom163Music(keyword word:NSString) {
-        let httpRequest = "https://music.163.com/#/search/m/?s=123";
+    
+    func searchSongFrom163Music(keyword word:String ,suc:@escaping (NSMutableArray)->Void,err:(NSError)->Void) {
+        let wordTemp = self.urlEncoded(string: word);
+        let httpRequest = "https://music.163.com/#/search/m/?s=\(wordTemp)";
         Alamofire.request(httpRequest).response{ response in
             let data = [self .dataToDictionary(data: response.data!)];
             var dataD = data.first
@@ -56,9 +81,10 @@ class NetworkManager: NSObject {
 //                       let  dataDic = dataD!!["data"] as? NSDictionary
             let listMusic = Music().transfromQQMusic(dic: dataDic);
             
-            for music in listMusic{
-                print((music as! Music).name!);
-            }
+            suc(listMusic);
+//            for music in listMusic{
+//                print((music as! Music).name!);
+//            }
         }
     }
     
@@ -75,7 +101,7 @@ class NetworkManager: NSObject {
     }
     
     //将原始的url编码为合法的url
-    func urlEncoded(string:NSString) -> String {
+    func urlEncoded(string:String) -> String {
         let encodeUrlString = string.addingPercentEncoding(withAllowedCharacters:
             .urlQueryAllowed)
         return encodeUrlString ?? ""

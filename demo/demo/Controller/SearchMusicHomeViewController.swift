@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UISearchBarDelegate {
+class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
 
     @IBOutlet weak var titleItem: UITabBarItem!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -19,11 +19,11 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UISear
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
-        DownloadManager().downloadSongForUrl(url:"", suc: {
-            
-        }) { (error) in
-            
-        }
+//        DownloadManager().downloadSongForUrl(url:"", suc: {
+//
+//        }) { (error) in
+//
+//        }
         // Do any additional setup after loading the view.
     }
 
@@ -39,6 +39,7 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UISear
         self.tableview.tableFooterView = UIView();
         self.searchBar.delegate = self;
         self.tableview.delegate = self;
+        self.tableview.dataSource = self;
 
         let gesture = UITapGestureRecognizer(target:self ,action: #selector(SearchMusicHomeViewController.handleTap));
         self.view.addGestureRecognizer(gesture)
@@ -54,12 +55,15 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UISear
 //        print(searchBar.text!);
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        var page = 1;
-        var num = 20;
+        
         let text = searchBar.text!
         print(text);
-//        print (NetworkManager().searchSongFromQQMusic(keyword:text as NSString, page: &page, number: &num));
-        print(NetworkManager().searchSongFrom163Music(keyword:text as NSString));
+        NetworkManager().searchSong(keyword:text, suc: { (listMusic) in
+            self.searchResultArray = listMusic;
+            self.tableview.reloadData();
+        }) { (error) in
+            
+        }
         searchBar.resignFirstResponder()
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,5 +74,28 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UISear
 //    }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.searchBar.resignFirstResponder();
+    }
+    //MARK: - TableViewDelegate
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.searchResultArray.count;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableview.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath);
+        let music = self.searchResultArray[indexPath.row];
+        cell.textLabel?.text = (music as! Music).name;
+        return cell;
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "musicPlayer", sender: self.searchResultArray[indexPath.row]);
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "musicPlayer"{
+            let vc = segue.destination as! PlayMuiscViewController;
+            vc.music = sender as? Music;
+            
+        }
     }
 }

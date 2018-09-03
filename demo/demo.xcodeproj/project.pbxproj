@@ -17,6 +17,7 @@
 		041F2C8720626BD300B158A6 /* demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F2C8620626BD300B158A6 /* demoUITests.swift */; };
 		045702662079C2C0006BF094 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045702652079C2C0006BF094 /* extensions.swift */; };
 		045702692079C2FB006BF094 /* libSystem.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 045702682079C2FB006BF094 /* libSystem.tbd */; };
+		04CC5DF1213D1D5F001D5FA7 /* PlayMuiscViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC5DF0213D1D5F001D5FA7 /* PlayMuiscViewController.swift */; };
 		04D961082105E33D007E89B3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */; };
 		04D961092105E33D007E89B3 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04D9610C2105E854007E89B3 /* LocalMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9610B2105E854007E89B3 /* LocalMusicViewController.swift */; };
@@ -77,6 +78,7 @@
 		045702652079C2C0006BF094 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		045702682079C2FB006BF094 /* libSystem.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libSystem.tbd; path = usr/lib/libSystem.tbd; sourceTree = SDKROOT; };
 		047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		04CC5DF0213D1D5F001D5FA7 /* PlayMuiscViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMuiscViewController.swift; sourceTree = "<group>"; };
 		04D9610B2105E854007E89B3 /* LocalMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMusicViewController.swift; sourceTree = "<group>"; };
 		04ED050220ECC9F000739D1D /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicHomeViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				04076CDA2063525E00E9C8EE /* MyMusicHomeTableViewController.swift */,
 				04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */,
 				04D9610B2105E854007E89B3 /* LocalMusicViewController.swift */,
+				04CC5DF0213D1D5F001D5FA7 /* PlayMuiscViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				041F2C6920626BD300B158A6 /* ViewController.swift in Sources */,
 				04ED050320ECC9F000739D1D /* DownloadManager.swift in Sources */,
 				041F2C6720626BD300B158A6 /* AppDelegate.swift in Sources */,
+				04CC5DF1213D1D5F001D5FA7 /* PlayMuiscViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
