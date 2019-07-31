@@ -62,7 +62,7 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
             self.searchResultArray = listMusic;
             self.tableview.reloadData();
         }) { (error) in
-            
+            NSLog("%@",error);
         }
         searchBar.resignFirstResponder()
     }

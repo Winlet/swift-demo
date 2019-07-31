@@ -25,7 +25,22 @@ class Music: NSObject {
     func transfromQQMusic(dic:NSDictionary) ->NSMutableArray{
         
         let listArray = NSMutableArray();
-        let list = (dic["song"] as! NSDictionary)["list"] as!NSMutableArray;
+        let list = (dic["song"] as! NSDictionary)["list"] as!NSArray;
+        for song in list {
+            let music = Music();
+            music.singeID = (song as! NSDictionary).object(forKey: "id") as? String ;
+            music.name = (song as! NSDictionary).object(forKey: "title") as? String;
+            music.songUrl = (song as! NSDictionary).object(forKey: "url") as? String;
+            music.songTime = (song as! NSDictionary).object(forKey: "time_public") as? String;
+            listArray.add(music);
+        }
+        
+        return listArray;
+    }
+    func transfrom163Music(dic:NSDictionary) ->NSMutableArray{
+        
+        let listArray = NSMutableArray();
+        let list = dic["songs"] as!NSArray;
         for song in list {
             let music = Music();
             music.singeID = (song as! NSDictionary).object(forKey: "id") as? String ;

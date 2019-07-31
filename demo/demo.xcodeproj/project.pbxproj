@@ -18,14 +18,13 @@
 		045702662079C2C0006BF094 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045702652079C2C0006BF094 /* extensions.swift */; };
 		045702692079C2FB006BF094 /* libSystem.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 045702682079C2FB006BF094 /* libSystem.tbd */; };
 		04CC5DF1213D1D5F001D5FA7 /* PlayMuiscViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC5DF0213D1D5F001D5FA7 /* PlayMuiscViewController.swift */; };
-		04D961082105E33D007E89B3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */; };
-		04D961092105E33D007E89B3 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04D9610C2105E854007E89B3 /* LocalMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9610B2105E854007E89B3 /* LocalMusicViewController.swift */; };
 		04ED050320ECC9F000739D1D /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED050220ECC9F000739D1D /* DownloadManager.swift */; };
 		04F2B42220649F2B00F642C3 /* SearchMusicHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */; };
 		04F2B4242064A1A400F642C3 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4232064A1A400F642C3 /* Music.swift */; };
 		04F2B4292064AC8E00F642C3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4282064AC8E00F642C3 /* NetworkManager.swift */; };
 		04F2B42C2064ACDB00F642C3 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B42B2064ACDB00F642C3 /* StoreManager.swift */; };
+		96827DC822F1A20E00937C91 /* QQ api in Resources */ = {isa = PBXBuildFile; fileRef = 96827DC722F1A20D00937C91 /* QQ api */; };
 		B3E41FFE25B7C36BB63BC3A1 /* Pods_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A44054AF70A9CF45C4D7BE /* Pods_demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +52,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				04D961092105E33D007E89B3 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,7 +75,6 @@
 		041F2C8820626BD300B158A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		045702652079C2C0006BF094 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		045702682079C2FB006BF094 /* libSystem.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libSystem.tbd; path = usr/lib/libSystem.tbd; sourceTree = SDKROOT; };
-		047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		04CC5DF0213D1D5F001D5FA7 /* PlayMuiscViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMuiscViewController.swift; sourceTree = "<group>"; };
 		04D9610B2105E854007E89B3 /* LocalMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMusicViewController.swift; sourceTree = "<group>"; };
 		04ED050220ECC9F000739D1D /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
@@ -88,6 +85,7 @@
 		06A44054AF70A9CF45C4D7BE /* Pods_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D47706892B0E6ECF855D4 /* Pods-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.debug.xcconfig"; sourceTree = "<group>"; };
 		695333ACCB91EBF3D3B5C069 /* Pods-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.release.xcconfig"; sourceTree = "<group>"; };
+		96827DC722F1A20D00937C91 /* QQ api */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "QQ api"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +94,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				045702692079C2FB006BF094 /* libSystem.tbd in Frameworks */,
-				04D961082105E33D007E89B3 /* Alamofire.framework in Frameworks */,
 				B3E41FFE25B7C36BB63BC3A1 /* Pods_demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +166,7 @@
 		041F2C6520626BD300B158A6 /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				96827DC622F1A20600937C91 /* Text */,
 				045702622079BFDD006BF094 /* Category */,
 				042F5C992074731300537332 /* Framework */,
 				04F2B42A2064ACAF00F642C3 /* StoreManager */,
@@ -207,7 +205,6 @@
 		042F5C992074731300537332 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				047A1D9D20F0B5D1007EE2AE /* Alamofire.framework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -255,6 +252,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		96827DC622F1A20600937C91 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				96827DC722F1A20D00937C91 /* QQ api */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -267,7 +272,6 @@
 				041F2C6020626BD300B158A6 /* Frameworks */,
 				041F2C6120626BD300B158A6 /* Resources */,
 				D0D765DD7ACD245F4233A1EB /* [CP] Embed Pods Frameworks */,
-				5146809BB7DCAD9905F4F317 /* [CP] Copy Pods Resources */,
 				04D9610A2105E33D007E89B3 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -368,6 +372,7 @@
 			files = (
 				041F2C7120626BD300B158A6 /* LaunchScreen.storyboard in Resources */,
 				041F2C6E20626BD300B158A6 /* Assets.xcassets in Resources */,
+				96827DC822F1A20E00937C91 /* QQ api in Resources */,
 				041F2C6C20626BD300B158A6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,21 +394,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5146809BB7DCAD9905F4F317 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B74FD6C407C90ED529EEC2C4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,16 +418,18 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
