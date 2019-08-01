@@ -12,6 +12,7 @@ class Music: NSObject {
     var songID:String?;    //歌曲ID
     var name:String?;       //歌曲名字
     var songUrl:String?;    //歌曲链接
+    var songMid:String?;    //专用ID
     
     var singer:Array<Singers>?;//歌手列表
     
@@ -34,6 +35,7 @@ class Music: NSObject {
             music.name = (song as! NSDictionary).object(forKey: "title") as? String;
             music.songUrl = (song as! NSDictionary).object(forKey: "url") as? String;
             music.songTime = (song as! NSDictionary).object(forKey: "time_public") as? String;
+            music.songMid = (song as! Dictionary<String,Any>)["mid"] as? String;
             music.singer = Singers().initFromArray(array: (song as! NSDictionary).object(forKey: "singer") as! Array);
             listArray.add(music);
         }

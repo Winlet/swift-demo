@@ -19,12 +19,17 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
-//        DownloadManager().downloadSongForUrl(url:"", suc: {
-//
+        
+//        DownloadManager().downloadFromQQMusic(mid: "001Qu4I30eVFYb", name: "abc", suc: {
+//            print("--------+-+-------");
 //        }) { (error) in
-//
+//            print(error);
 //        }
-        // Do any additional setup after loading the view.
+//        DownloadManager().downloadFrom163Music(id: "574921549", name: "怪咖", suc: {
+//            print("--------+-+-------");
+//        }) { (error) in
+//            print(error);
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,9 +45,9 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
         self.searchBar.delegate = self;
         self.tableview.delegate = self;
         self.tableview.dataSource = self;
-
-        let gesture = UITapGestureRecognizer(target:self ,action: #selector(SearchMusicHomeViewController.handleTap));
-        self.view.addGestureRecognizer(gesture)
+        self.tableview.register(UINib.init(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "searchCell")
+//        let gesture = UITapGestureRecognizer(target:self ,action: #selector(SearchMusicHomeViewController.handleTap));
+//        self.view.addGestureRecognizer(gesture)
         
     }
     
@@ -83,26 +88,33 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath);
         let music = self.searchResultArray[indexPath.row] as! Music;
-        cell.textLabel?.text = music.name;
+    
         var singerString = [String]();
         for singer in music.singer! {
             singerString.append(singer.name!);
         }
         let temp = singerString.joined(separator: "/");
-        cell.detailTextLabel?.text = temp;
-        
+    
+        (cell as! TableViewCell).setInfo(title: music.name!, author: temp);
         return cell;
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50;
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "musicPlayer", sender: self.searchResultArray[indexPath.row]);
+        let vc = PlayMuiscViewController();
+        vc.music = self.searchResultArray[indexPath.row] as? Music;
+        self.navigationController?.pushViewController(vc, animated: true);
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "musicPlayer"{
-            let vc = segue.destination as! PlayMuiscViewController;
-            vc.music = sender as? Music;
-            
-        }
-    }
+    
+//    self.performSegue(withIdentifier: "musicPlayer", sender: self.searchResultArray[indexPath.row]);
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "musicPlayer"{
+//            let vc = segue.destination as! PlayMuiscViewController;
+//            vc.music = sender as? Music;
+//
+//        }
+//    }
 }

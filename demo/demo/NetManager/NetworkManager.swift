@@ -39,7 +39,7 @@ class NetworkManager: NSObject {
     public func searchSongFromQQMusic(keyword word:String,page pageT:inout Int,number numberT:inout Int ,suc: @escaping (NSMutableArray)->Void , err:@escaping (NSError)->Void) {
         pageT = 1;
         numberT = 20;
-       let wordTemp = self.urlEncoded(string: word);
+       let wordTemp = Util.urlEncoded(string: word);
         let httpRequest = "https://c.y.qq.com/soso/fcgi-bin/client_search_cp?ct=24&qqmusic_ver=1298&new_json=1&remoteplace=txt.yqq.center&searchid=37602803789127241&t=0&aggr=1&cr=1&catZhida=1&lossless=0&flag_qc=0&p=\(pageT)&n=\(numberT)&w=\(wordTemp)&g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0";
         Alamofire.request(httpRequest).responseJSON { response in
             switch response.result{
@@ -55,7 +55,7 @@ class NetworkManager: NSObject {
     }
     
     func searchSongFrom163Music(keyword word:String ,suc:@escaping (NSMutableArray)->Void,err:@escaping (NSError)->Void) {
-        let wordTemp = self.urlEncoded(string: word);
+        let wordTemp = Util.urlEncoded(string: word);
         // https://music.aityp.com/
         //http://music.163.com/song/media/outer/url?id=569212210
         let httpRequest = "https://music.aityp.com/search?keywords=\(wordTemp)";
@@ -71,31 +71,8 @@ class NetworkManager: NSObject {
         }
     }
     
-    func dataToDictionary(data:Data) ->Dictionary<String,Any>?{
-        do{
-        let json = try JSONSerialization.jsonObject(with:data, options:.mutableContainers)
-        let dic = json as! Dictionary<String,Any>
-            return dic;
-            
-        }catch _ {
-            print("失败")
-            return nil;
-        }
+    func test(mid:String) -> String {
+ 
+        return "";
     }
-    
-    //将原始的url编码为合法的url
-    func urlEncoded(string:String) -> String {
-        let encodeUrlString = string.addingPercentEncoding(withAllowedCharacters:
-            .urlQueryAllowed)
-        return encodeUrlString ?? ""
-    }
-    
-    //将编码后的url转换回原始的url
-    func urlDecoded(string:NSString) -> String {
-        return string.removingPercentEncoding ?? ""
-    }
-  
-
-
-    
 }

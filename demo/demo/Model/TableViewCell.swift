@@ -9,7 +9,9 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +21,15 @@ class TableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setInfo(title:String,author:String) {
+        self.titleLabel.text = title;
+        self.authorLabel.text = author;
+    }
+    
+    @IBAction func forMoreClick(_ sender: UIButton) {
+        print("123123");
     }
     
 }

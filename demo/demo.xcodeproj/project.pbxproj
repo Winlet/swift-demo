@@ -28,6 +28,7 @@
 		96A3F56E22F279970095FE9B /* Singers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3F56D22F279970095FE9B /* Singers.swift */; };
 		96A3F57122F297CB0095FE9B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3F56F22F297CB0095FE9B /* TableViewCell.swift */; };
 		96A3F57222F297CB0095FE9B /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96A3F57022F297CB0095FE9B /* TableViewCell.xib */; };
+		96A3F57522F2DD8C0095FE9B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3F57422F2DD8C0095FE9B /* Util.swift */; };
 		B3E41FFE25B7C36BB63BC3A1 /* Pods_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A44054AF70A9CF45C4D7BE /* Pods_demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,10 +89,11 @@
 		06A44054AF70A9CF45C4D7BE /* Pods_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D47706892B0E6ECF855D4 /* Pods-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.debug.xcconfig"; sourceTree = "<group>"; };
 		695333ACCB91EBF3D3B5C069 /* Pods-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.release.xcconfig"; sourceTree = "<group>"; };
-		96827DC722F1A20D00937C91 /* QQ api */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "QQ api"; sourceTree = "<group>"; };
+		96827DC722F1A20D00937C91 /* QQ api */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "QQ api"; sourceTree = "<group>"; wrapsLines = 0; };
 		96A3F56D22F279970095FE9B /* Singers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singers.swift; sourceTree = "<group>"; };
 		96A3F56F22F297CB0095FE9B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = demo/Model/TableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		96A3F57022F297CB0095FE9B /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TableViewCell.xib; path = demo/Model/TableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		96A3F57422F2DD8C0095FE9B /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 		041F2C6520626BD300B158A6 /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				96A3F57322F2DD780095FE9B /* Util */,
 				96827DC622F1A20600937C91 /* Text */,
 				045702622079BFDD006BF094 /* Category */,
 				042F5C992074731300537332 /* Framework */,
@@ -267,6 +270,14 @@
 				96827DC722F1A20D00937C91 /* QQ api */,
 			);
 			path = Text;
+			sourceTree = "<group>";
+		};
+		96A3F57322F2DD780095FE9B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				96A3F57422F2DD8C0095FE9B /* Util.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,6 +471,7 @@
 				04F2B4242064A1A400F642C3 /* Music.swift in Sources */,
 				041F2C6920626BD300B158A6 /* ViewController.swift in Sources */,
 				04ED050320ECC9F000739D1D /* DownloadManager.swift in Sources */,
+				96A3F57522F2DD8C0095FE9B /* Util.swift in Sources */,
 				041F2C6720626BD300B158A6 /* AppDelegate.swift in Sources */,
 				04CC5DF1213D1D5F001D5FA7 /* PlayMuiscViewController.swift in Sources */,
 			);

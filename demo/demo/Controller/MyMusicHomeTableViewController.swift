@@ -69,7 +69,11 @@ class MyMusicHomeTableViewController: UITableViewController {
 //    }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40;
+        if section == 0 {
+            return 0;
+        }else{
+            return 40;
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
