@@ -20,8 +20,8 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         let fileManager = FileManager.default
         var files = fileManager.subpaths(atPath: localPath)
         for index in files!{
-         let music = Music().initMusic(name:index, singer:"123");
-            array.add(music);
+//         let music = Music().initMusic(name:index, singer:"123");
+//            array.add(music);
         }
         return array;
     }()

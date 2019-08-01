@@ -25,6 +25,9 @@
 		04F2B4292064AC8E00F642C3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4282064AC8E00F642C3 /* NetworkManager.swift */; };
 		04F2B42C2064ACDB00F642C3 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B42B2064ACDB00F642C3 /* StoreManager.swift */; };
 		96827DC822F1A20E00937C91 /* QQ api in Resources */ = {isa = PBXBuildFile; fileRef = 96827DC722F1A20D00937C91 /* QQ api */; };
+		96A3F56E22F279970095FE9B /* Singers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3F56D22F279970095FE9B /* Singers.swift */; };
+		96A3F57122F297CB0095FE9B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3F56F22F297CB0095FE9B /* TableViewCell.swift */; };
+		96A3F57222F297CB0095FE9B /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96A3F57022F297CB0095FE9B /* TableViewCell.xib */; };
 		B3E41FFE25B7C36BB63BC3A1 /* Pods_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A44054AF70A9CF45C4D7BE /* Pods_demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +89,9 @@
 		3F0D47706892B0E6ECF855D4 /* Pods-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.debug.xcconfig"; sourceTree = "<group>"; };
 		695333ACCB91EBF3D3B5C069 /* Pods-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.release.xcconfig"; sourceTree = "<group>"; };
 		96827DC722F1A20D00937C91 /* QQ api */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "QQ api"; sourceTree = "<group>"; };
+		96A3F56D22F279970095FE9B /* Singers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singers.swift; sourceTree = "<group>"; };
+		96A3F56F22F297CB0095FE9B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = demo/Model/TableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		96A3F57022F297CB0095FE9B /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TableViewCell.xib; path = demo/Model/TableViewCell.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,8 @@
 		04076CD52063510F00E9C8EE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				96A3F56F22F297CB0095FE9B /* TableViewCell.swift */,
+				96A3F57022F297CB0095FE9B /* TableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				04F2B4232064A1A400F642C3 /* Music.swift */,
+				96A3F56D22F279970095FE9B /* Singers.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				041F2C7120626BD300B158A6 /* LaunchScreen.storyboard in Resources */,
+				96A3F57222F297CB0095FE9B /* TableViewCell.xib in Resources */,
 				041F2C6E20626BD300B158A6 /* Assets.xcassets in Resources */,
 				96827DC822F1A20E00937C91 /* QQ api in Resources */,
 				041F2C6C20626BD300B158A6 /* Main.storyboard in Resources */,
@@ -439,9 +449,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A3F57122F297CB0095FE9B /* TableViewCell.swift in Sources */,
 				04F2B4292064AC8E00F642C3 /* NetworkManager.swift in Sources */,
 				04F2B42C2064ACDB00F642C3 /* StoreManager.swift in Sources */,
 				04D9610C2105E854007E89B3 /* LocalMusicViewController.swift in Sources */,
+				96A3F56E22F279970095FE9B /* Singers.swift in Sources */,
 				04076CDB2063525E00E9C8EE /* MyMusicHomeTableViewController.swift in Sources */,
 				045702662079C2C0006BF094 /* extensions.swift in Sources */,
 				04F2B42220649F2B00F642C3 /* SearchMusicHomeViewController.swift in Sources */,

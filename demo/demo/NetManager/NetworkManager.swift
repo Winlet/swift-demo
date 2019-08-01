@@ -14,19 +14,17 @@ import Alamofire
 class NetworkManager: NSObject {
     
     public func searchSong(keyword word:String,suc:@escaping (NSMutableArray)->Void,err:@escaping (NSError)->Void){
-//        print (NetworkManager().searchSongFromQQMusic(keyword:text as NSString, page: &page, number: &num));
-//        print(NetworkManager().searchSongFrom163Music(keyword:text as NSString));
-        
-//        var page = 1;
-//        var num = 20;
-//        self.searchSongFromQQMusic(keyword: word, page: &page, number: &num, suc: { (listMusic) in
-//            for music in listMusic{
-//                print((music as! Music).name!);
-//            }
-//            suc(listMusic);
-//        }) { (error) in
-//            err(error);
-//        }
+ 
+        var page = 1;
+        var num = 20;
+        self.searchSongFromQQMusic(keyword: word, page: &page, number: &num, suc: { (listMusic) in
+            for music in listMusic{
+                print((music as! Music).name!);
+            }
+            suc(listMusic);
+        }) { (error) in
+            err(error);
+        }
         
         self.searchSongFrom163Music(keyword: word, suc: { (listMusic) in
             for music in listMusic{
@@ -59,42 +57,18 @@ class NetworkManager: NSObject {
     func searchSongFrom163Music(keyword word:String ,suc:@escaping (NSMutableArray)->Void,err:@escaping (NSError)->Void) {
         let wordTemp = self.urlEncoded(string: word);
         // https://music.aityp.com/
+        //http://music.163.com/song/media/outer/url?id=569212210
         let httpRequest = "https://music.aityp.com/search?keywords=\(wordTemp)";
         Alamofire.request(httpRequest).responseJSON{ (response) in
             switch response.result{
             case .success(let dataResult):
-             
-                let dataDic1 = (dataResult as! NSDictionary)["result"] as! NSDictionary
-                let data = [self .dataToDictionary(data: response.data!)];
-                var dataD = data.first
-                var dataDic : NSDictionary = NSDictionary();
-                if dataD != nil {
-                    dataDic = dataD!!["result"] as! NSDictionary
-                }
-                let listMusic = Music().transfrom163Music(dic: dataDic1);
+                let dataDic = (dataResult as! NSDictionary)["result"] as! NSDictionary;
+                let listMusic = Music().transfrom163Music(dic: dataDic);
                 suc(listMusic);
             case .failure(let error):
                err(error as NSError);
             }
-//            switch response.result {
-//            case .Success(let data):
-//
-//            case .Failure(let error):
-//
-//            }
-          
-            
         }
-//        Alamofire.request(httpRequest).response{ response in
-//            let data = [self .dataToDictionary(data: response.data!)];
-//            var dataD = data.first
-//            var dataDic : NSDictionary = NSDictionary();
-//            if dataD != nil {
-//                dataDic = dataD!!["data"] as! NSDictionary
-//            }
-//            let listMusic = Music().transfromQQMusic(dic: dataDic);
-//            suc(listMusic);
-//        }
     }
     
     func dataToDictionary(data:Data) ->Dictionary<String,Any>?{

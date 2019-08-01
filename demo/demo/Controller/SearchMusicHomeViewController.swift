@@ -82,8 +82,15 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath);
-        let music = self.searchResultArray[indexPath.row];
-        cell.textLabel?.text = (music as! Music).name;
+        let music = self.searchResultArray[indexPath.row] as! Music;
+        cell.textLabel?.text = music.name;
+        var singerString = [String]();
+        for singer in music.singer! {
+            singerString.append(singer.name!);
+        }
+        let temp = singerString.joined(separator: "/");
+        cell.detailTextLabel?.text = temp;
+        
         return cell;
     }
     
