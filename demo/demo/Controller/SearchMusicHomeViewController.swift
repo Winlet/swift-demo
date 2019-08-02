@@ -19,17 +19,7 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
-        
-//        DownloadManager().downloadFromQQMusic(mid: "001Qu4I30eVFYb", name: "abc", suc: {
-//            print("--------+-+-------");
-//        }) { (error) in
-//            print(error);
-//        }
-//        DownloadManager().downloadFrom163Music(id: "574921549", name: "怪咖", suc: {
-//            print("--------+-+-------");
-//        }) { (error) in
-//            print(error);
-//        }
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,7 +94,13 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = PlayMuiscViewController();
-        vc.music = self.searchResultArray[indexPath.row] as? Music;
+        let  music = self.searchResultArray[indexPath.row] as? Music;
+        DownloadManager().download(music: music!, suc: {
+            print("--------+-+-------");
+        }) { (error) in
+            print(error);
+        }
+        vc.music = music;
         self.navigationController?.pushViewController(vc, animated: true);
     }
     

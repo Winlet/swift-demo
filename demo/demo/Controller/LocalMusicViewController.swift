@@ -20,8 +20,8 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         let fileManager = FileManager.default
         var files = fileManager.subpaths(atPath: localPath)
         for index in files!{
-//         let music = Music().initMusic(name:index, singer:"123");
-//            array.add(music);
+            let music = Music().initMusic(name: index,"", path:localPath+"/"+index);
+            array.add(music);
         }
         return array;
     }()
@@ -34,6 +34,8 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
     func initUI() {
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.tableView.tableFooterView = UIView.init();
+        self.tableView.register(UINib.init(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "showCell")
     }
     //MARK: -delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,10 +43,20 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "localSongCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "showCell", for: indexPath)
         let music = self.musicShowArray[indexPath.row] as! Music;
-        cell.textLabel?.text = music.name! as String;
+        (cell as! TableViewCell).setInfo(title: music.name!, author:"");
         return cell;
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true);
+        
+        let music = self.musicShowArray[indexPath.row] as! Music;
+        let vc = storyboard?.instantiateViewController(withIdentifier: "playVC") as! PlayMuiscViewController;
+        vc.music = music;
+        vc.playList = self.musicShowArray as? Array<Music>;
+        self.navigationController?.pushViewController(vc, animated: true);
         
     }
     override func didReceiveMemoryWarning() {
@@ -52,8 +64,4 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    
-
-  
-
 }

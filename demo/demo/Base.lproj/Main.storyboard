@@ -75,7 +75,7 @@
         <!--Play Muisc View Controller-->
         <scene sceneID="c8x-GX-PpR">
             <objects>
-                <viewController id="Puc-Xq-YdG" customClass="PlayMuiscViewController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="playVC" id="Puc-Xq-YdG" customClass="PlayMuiscViewController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ehb-3v-u9t"/>
                         <viewControllerLayoutGuide type="bottom" id="nJo-7l-fpW"/>
@@ -83,12 +83,138 @@
                     <view key="view" contentMode="scaleToFill" id="Iyg-Uu-Q1u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sII-8n-dSd">
+                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPN-d7-Ku6">
+                                        <rect key="frame" x="8" y="8" width="42" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="AKi-y4-AeJ"/>
+                                            <constraint firstAttribute="width" constant="42" id="ued-X9-J92"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:59" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEO-Yg-GRv">
+                                        <rect key="frame" x="331" y="12" width="36" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Sht-OE-Zrq"/>
+                                            <constraint firstAttribute="width" constant="36" id="SkY-x2-UKZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="FR0-E8-B2W">
+                                        <rect key="frame" x="48" y="7" width="275" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="RLq-lY-EIC"/>
+                                        </constraints>
+                                        <color key="minimumTrackTintColor" red="0.8980392157" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="switchProgress:" destination="Puc-Xq-YdG" eventType="valueChanged" id="nQA-UN-kVD"/>
+                                        </connections>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvh-fH-SJK">
+                                        <rect key="frame" x="16" y="50" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="wJK-eO-siO"/>
+                                            <constraint firstAttribute="width" constant="30" id="zAV-mE-wPA"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="循环播放"/>
+                                        <connections>
+                                            <action selector="switchMode:" destination="Puc-Xq-YdG" eventType="touchUpInside" id="ody-R2-RPd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DA9-UI-adW">
+                                        <rect key="frame" x="87.5" y="40" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="0cZ-aP-MAc"/>
+                                            <constraint firstAttribute="height" constant="50" id="zyA-8i-h7p"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="上一首"/>
+                                        <connections>
+                                            <action selector="lastSong:" destination="Puc-Xq-YdG" eventType="touchUpInside" id="GbS-6m-Hhz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bn-dd-vn0">
+                                        <rect key="frame" x="162.5" y="40" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="6ae-k2-5GE"/>
+                                            <constraint firstAttribute="height" constant="50" id="jj2-S7-MSw"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="开始"/>
+                                        <state key="selected" image="暂停"/>
+                                        <connections>
+                                            <action selector="playSong:" destination="Puc-Xq-YdG" eventType="touchUpInside" id="1WB-ve-bCg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKj-II-TIk">
+                                        <rect key="frame" x="309" y="40" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="G31-2L-7pS"/>
+                                            <constraint firstAttribute="height" constant="50" id="til-BH-0sE"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="音乐列表"/>
+                                        <connections>
+                                            <action selector="musicList:" destination="Puc-Xq-YdG" eventType="touchUpInside" id="GQV-Lf-FQe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blE-C5-Nbd">
+                                        <rect key="frame" x="237.5" y="40" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="9uI-TS-FSM"/>
+                                            <constraint firstAttribute="width" constant="50" id="y1p-fk-ceO"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="下一首"/>
+                                        <connections>
+                                            <action selector="nextSong:" destination="Puc-Xq-YdG" eventType="touchUpInside" id="i0Z-i9-8gF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5Bn-dd-vn0" secondAttribute="bottom" constant="10" id="10Y-Xs-OVk"/>
+                                    <constraint firstItem="blE-C5-Nbd" firstAttribute="top" secondItem="DA9-UI-adW" secondAttribute="top" id="1iE-Cw-MxG"/>
+                                    <constraint firstItem="jvh-fH-SJK" firstAttribute="leading" secondItem="sII-8n-dSd" secondAttribute="leading" constant="16" id="BJN-B9-xNN"/>
+                                    <constraint firstItem="QKj-II-TIk" firstAttribute="centerY" secondItem="jvh-fH-SJK" secondAttribute="centerY" id="DTO-8h-g5a"/>
+                                    <constraint firstItem="kEO-Yg-GRv" firstAttribute="centerY" secondItem="NPN-d7-Ku6" secondAttribute="centerY" id="ESl-Rz-bQw"/>
+                                    <constraint firstItem="NPN-d7-Ku6" firstAttribute="leading" secondItem="sII-8n-dSd" secondAttribute="leading" constant="8" id="EWU-zn-Til"/>
+                                    <constraint firstAttribute="height" constant="100" id="InN-hL-YLw"/>
+                                    <constraint firstItem="5Bn-dd-vn0" firstAttribute="centerY" secondItem="jvh-fH-SJK" secondAttribute="centerY" id="KkH-zt-daQ"/>
+                                    <constraint firstItem="5Bn-dd-vn0" firstAttribute="centerX" secondItem="sII-8n-dSd" secondAttribute="centerX" id="Rnc-1g-koH"/>
+                                    <constraint firstAttribute="trailing" secondItem="kEO-Yg-GRv" secondAttribute="trailing" constant="8" id="U4V-Fm-5rK"/>
+                                    <constraint firstItem="kEO-Yg-GRv" firstAttribute="leading" secondItem="FR0-E8-B2W" secondAttribute="trailing" constant="10" id="ZOV-my-5UM"/>
+                                    <constraint firstItem="5Bn-dd-vn0" firstAttribute="leading" secondItem="DA9-UI-adW" secondAttribute="trailing" constant="25" id="fsI-fV-tZK"/>
+                                    <constraint firstItem="5Bn-dd-vn0" firstAttribute="top" secondItem="DA9-UI-adW" secondAttribute="top" id="jMe-fr-HyK"/>
+                                    <constraint firstAttribute="trailing" secondItem="QKj-II-TIk" secondAttribute="trailing" constant="16" id="qMQ-87-tXg"/>
+                                    <constraint firstItem="FR0-E8-B2W" firstAttribute="leading" secondItem="NPN-d7-Ku6" secondAttribute="trailing" id="sJA-4Q-aZN"/>
+                                    <constraint firstItem="blE-C5-Nbd" firstAttribute="leading" secondItem="5Bn-dd-vn0" secondAttribute="trailing" constant="25" id="tqi-NJ-KFW"/>
+                                    <constraint firstItem="NPN-d7-Ku6" firstAttribute="top" secondItem="sII-8n-dSd" secondAttribute="top" constant="8" id="tue-0H-JAa"/>
+                                    <constraint firstItem="FR0-E8-B2W" firstAttribute="top" secondItem="sII-8n-dSd" secondAttribute="top" constant="7" id="uTH-fR-71g"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sII-8n-dSd" firstAttribute="leading" secondItem="Iyg-Uu-Q1u" secondAttribute="leading" id="80s-nu-fu6"/>
+                            <constraint firstAttribute="trailing" secondItem="sII-8n-dSd" secondAttribute="trailing" id="ItW-bB-C9M"/>
+                            <constraint firstItem="nJo-7l-fpW" firstAttribute="top" secondItem="sII-8n-dSd" secondAttribute="bottom" id="leU-8i-3g8"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="endTimeLabel" destination="kEO-Yg-GRv" id="Din-e5-6Tl"/>
+                        <outlet property="playBtn" destination="5Bn-dd-vn0" id="jle-7b-b1n"/>
+                        <outlet property="playModeBtn" destination="jvh-fH-SJK" id="hHD-yL-JXZ"/>
+                        <outlet property="progressSlider" destination="FR0-E8-B2W" id="XQR-yo-kxQ"/>
+                        <outlet property="startTimeLabel" destination="NPN-d7-Ku6" id="L6u-VR-D8P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rll-VA-kmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-927" y="607"/>
+            <point key="canvasLocation" x="-63.200000000000003" y="606.74662668665667"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="Vq3-01-bAx">
@@ -172,11 +298,12 @@
                     <connections>
                         <outlet property="headView" destination="sbV-ZX-dyr" id="x4M-Ax-GX9"/>
                         <outlet property="tableView" destination="p1z-3W-cjZ" id="ciA-xU-jYL"/>
+                        <segue destination="Puc-Xq-YdG" kind="show" id="KjL-Pn-h6W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kn9-PE-ViA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="609" y="-125"/>
+            <point key="canvasLocation" x="-62" y="-125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="RsZ-eA-TAF">
@@ -198,4 +325,15 @@
             <point key="canvasLocation" x="-1678" y="-125"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="上一首" width="400" height="400"/>
+        <image name="下一首" width="400" height="400"/>
+        <image name="开始" width="400" height="400"/>
+        <image name="循环播放" width="400" height="400"/>
+        <image name="暂停" width="400" height="400"/>
+        <image name="音乐列表" width="400" height="400"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KjL-Pn-h6W"/>
+    </inferredMetricsTieBreakers>
 </document>

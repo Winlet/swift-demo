@@ -11,19 +11,24 @@ import UIKit
 class Music: NSObject {
     var songID:String?;    //歌曲ID
     var name:String?;       //歌曲名字
+    var comeType:MusicFromType?;//歌曲来源
     var songUrl:String?;    //歌曲链接
     var songMid:String?;    //专用ID
+    
+    var localPath:String?;  //本地路径
+    
     
     var singer:Array<Singers>?;//歌手列表
     
     var songTime:String?;   //发布时间 TODO:后期转专辑对象属性
     
-//    func initMusic(name:String,singer:String) -> Music {
-//        let music = Music();
-//        music.name = name;
-//        music.singer = singer;
-//        return music;
-//    }
+    func initMusic(name:String,_ singer:String,path:String) -> Music {
+        let music = Music();
+        music.name = name;
+        music.songID = singer;
+        music.localPath = path;
+        return music;
+    }
     
     func transfromQQMusic(dic:NSDictionary) ->NSMutableArray{
         
@@ -31,6 +36,7 @@ class Music: NSObject {
         let list = (dic["song"] as! NSDictionary)["list"] as!NSArray;
         for song in list {
             let music = Music();
+            music.comeType = .QQMusic;
             music.songID = NumberFormatter.init().string(from:(song as! NSDictionary).object(forKey: "id") as! NSNumber) ;
             music.name = (song as! NSDictionary).object(forKey: "title") as? String;
             music.songUrl = (song as! NSDictionary).object(forKey: "url") as? String;
@@ -48,6 +54,7 @@ class Music: NSObject {
         let list = dic["songs"] as!NSArray;
         for song in list {
             let music = Music();
+            music.comeType = .NTESMusic;
             music.songID = NumberFormatter.init().string(from:(song as! NSDictionary).object(forKey: "id") as! NSNumber)  ;
             music.name = (song as! NSDictionary).object(forKey: "name") as? String;
             music.songUrl = (song as! NSDictionary).object(forKey: "rUrl") as? String;

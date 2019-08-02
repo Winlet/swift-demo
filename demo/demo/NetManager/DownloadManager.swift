@@ -10,6 +10,23 @@ import UIKit
 import Alamofire
 
 class DownloadManager: NSObject {
+    
+    func download(music:Music,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
+        
+        switch music.comeType{
+        case .QQMusic?:
+            self.downloadFromQQMusic(mid: music.songMid!, name: music.name!, suc: suc, err: err);
+            break
+        case .NTESMusic?:
+            self.downloadFrom163Music(id: music.songID!, name: music.name!, suc: suc, err: err);
+            break
+        default: break
+        }
+       
+        
+    }
+    
+    
     func downloadFromQQMusic(mid:String,name:String,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
         let guid = "8383045540";
         let filename = "C400"+mid+".m4a";
@@ -61,7 +78,7 @@ class DownloadManager: NSObject {
             print(fileUrl)
             return (fileUrl,[.removePreviousFile, .createIntermediateDirectories] )
         }
-
+        
         Alamofire.download(requestUrl, to: destination).response { response in // method defaults to `.get`
             if response.error != nil{
                 err(response.error!);
