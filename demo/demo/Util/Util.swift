@@ -32,4 +32,16 @@ class Util: NSObject {
     class func urlDecoded(string:NSString) -> String {
         return string.removingPercentEncoding ?? ""
     }
+    
+    //随机数组
+    class func shuffleArray(arr:[Music]) -> [Music] {
+        var data:[Music] = arr
+        for i in 1..<arr.count {
+            let index:Int = Int(arc4random()) % i
+            if index != i {
+                data.swapAt(i, index)
+            }
+        }
+        return data
+    }
 }

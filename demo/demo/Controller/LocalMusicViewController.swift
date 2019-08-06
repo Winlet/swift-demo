@@ -55,7 +55,7 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         let music = self.musicShowArray[indexPath.row] as! Music;
         let vc = storyboard?.instantiateViewController(withIdentifier: "playVC") as! PlayMuiscViewController;
         vc.music = music;
-        vc.playList = self.musicShowArray as? Array<Music>;
+        vc.originList = self.musicShowArray as? Array<Music>;
         self.navigationController?.pushViewController(vc, animated: true);
         
     }

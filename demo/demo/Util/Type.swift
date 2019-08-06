@@ -16,18 +16,17 @@ public enum MusicFromType : Int {
 }
 
 public enum MusicModeType : Int {
-    /* 切歌 */
-    case switchPlay = 0
-    /* 播放 */
-    case play  = 1
-    /* 停止 */
-    case stop = 2
-    /* 静音 */
-    case mute  = 3
-    /* 音量调整 */
-    case volume = 4
-    /* 歌曲列表 */
-    case songList = 5
-    /* 歌曲循环 */
-    case runLoop = 6
+    /* 单曲循环 */
+    case runLoop = 1000
+    /* 全部循环 */
+    case allLoop = 1001
+    /* 随机循环 */
+    case randomLoop = 1002
+    
+}
+public enum MusicPlayState : String {
+    /* 播放完成*/
+    case MusicPlayCompletedKey = "playCompleted"
+
+    
 }

@@ -19,9 +19,7 @@ class MusicPlayer: NSObject {
     fileprivate var isLoop:Bool = false
     /// 音量
     fileprivate var volume:Float = 1.0
-    
-    /// 音量
-     var time:TimeInterval = 0;
+
     /// 初始化播放器
     class func setupPlayer() {
         let session = AVAudioSession.sharedInstance()
@@ -49,20 +47,24 @@ class MusicPlayer: NSObject {
         
         shared.player = player
         
-        if let result = player?.prepareToPlay() {
-            if result {
-                resumePlayer(time: shared.time)
-            }
-            return result
-        }
+//        if let result = player?.prepareToPlay() {
+//            if result {
+//                resumePlayer()
+//            }
+//            return result
+//        }
         
         return false
     }
-    
-    class func resumePlayer(time:TimeInterval) {
+    class func playTo(time:TimeInterval) {
+        
+        if let player = shared.player {
+           
+        }
+    }
+    class func resumePlayer() {
         if let player = shared.player,!player.isPlaying {
-            player.play(atTime: time)
-//            player.play()
+            player.play()
         }
     }
     
@@ -93,18 +95,21 @@ class MusicPlayer: NSObject {
         
         shared.volume = volume
     }
-    
+    //当前时间
     class func currentTime()->TimeInterval{
-       
-//        var time =
         
         return shared.player?.currentTime ?? 0;
+    }
+    //全部时长
+    class func duration()->TimeInterval {
+        return shared.player?.duration ?? 0;
     }
 }
 
 extension MusicPlayer:AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-//        NotificationCenter.default.post(name: MusicBoxInterPlayerPlayCompletedKey, object: nil)
+        NotificationCenter.default.post(name:NSNotification.Name(rawValue: MusicPlayState.MusicPlayCompletedKey.rawValue), object: nil)
+        
     }
 }
 

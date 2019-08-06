@@ -11,6 +11,8 @@ import CoreMedia
 
 class PlayMuiscViewController: UIViewController {
     var music :Music!
+    var originList:Array<Music>?
+    var index :Int!
     var playList:Array<Music>?
     
     @IBOutlet weak var startTimeLabel: UILabel!
@@ -19,18 +21,34 @@ class PlayMuiscViewController: UIViewController {
     @IBOutlet weak var playModeBtn: UIButton!
     @IBOutlet weak var playBtn: UIButton!
     
-    var progress:Int?
     var timer : Timer?
+    var duration : Float?
+    var playMode : Int!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1);
-        progress = 0;
+        playList = originList;
+        self.setup();
+        let mode = UserDefaults.standard.integer(forKey: "UserModeKey");
+        switchModeBtn(mode: mode%1000+1000);
+        // 添加通知监听
+  
+        NotificationCenter.default.addObserver(self, selector: #selector(completePlayAction), name:  NSNotification.Name(rawValue: MusicPlayState.MusicPlayCompletedKey.rawValue), object: nil)
+     
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    func setup() {
+        MusicPlayer.playMusic(self.music.localPath!);
+        duration = Float(MusicPlayer.duration());
+        self.endTimeLabel.text = self.dateFromTime(time:MusicPlayer.duration());
+        index = playList?.firstIndex(of: music);
+        print(music.name);
     }
     
     // 2.开始计时
@@ -45,17 +63,9 @@ class PlayMuiscViewController: UIViewController {
     @objc func updataSecond() {
         
         let time = MusicPlayer.currentTime();
-        self.progressSlider!.value = Float(time);
-        let date = Date.init(timeIntervalSince1970:time);
-        
-        let dfmatter = DateFormatter()
-        
-        dfmatter.dateFormat="m:ss"
-        
-        let dateStr = dfmatter.string(from: date)
-        self.startTimeLabel.text = dateStr;
-//        MusicPlayer
-//            stopTimer()
+        self.progressSlider!.value = Float(time)/duration!;
+        self.startTimeLabel.text = self.dateFromTime(time: time);
+
     }
 
     // 4.停止计时
@@ -65,29 +75,42 @@ class PlayMuiscViewController: UIViewController {
             timer = nil
         }
     }
+
     //MARK: Action
     @IBAction func switchProgress(_ sender: UISlider) {
-        let seconds : Int64 = Int64(sender.value)
-        let targetTime = CMTimeMake(seconds, 1)
-        print("--------+-+-------");
-//        MusicPlayer.shared.time = targetTime;
+        //暂无功能
+//        let seconds = Int64(sender.value * duration!);
+//        let targetTime = CMTimeMake(seconds, Int32(duration!))
+//        MusicPlayer.playTo(time: CMTimeGetSeconds(targetTime));
     }
     @IBAction func switchMode(_ sender: UIButton) {
+        let userDefault = UserDefaults.standard
+        
+        let mode = userDefault.integer(forKey: "UserModeKey")
+        var temp = mode%1000
+        temp += 1;
+        temp = (temp%3 + 1000);
+        switchModeBtn(mode: temp);
+        userDefault.set(temp, forKey: "UserModeKey")
     }
     @IBAction func lastSong(_ sender: UIButton) {
+        if index == 0 {
+            index = playList!.count - 1;
+        }else{
+            index -= 1;
+        }
+        self.music = playList![index];
+        setup();
+        self.playSong(UIButton());
+        
     }
     @IBAction func playSong(_ sender: UIButton) {
         
         sender.isSelected = !sender.isSelected;
         if sender.isSelected {
             self.startTimer();
-            if progress==0 {
-                MusicPlayer.playMusic(self.music.localPath!);
-            }else{
-                let seconds : Int64 = Int64(self.progressSlider.value)
-                let targetTime = CMTimeMake(seconds, 1)
-//                MusicPlayer.resumePlayer(time: targetTime);
-            }
+                MusicPlayer.resumePlayer();
+
         }else{
             MusicPlayer.pausePlayer();
             self.stopTimer();
@@ -95,8 +118,55 @@ class PlayMuiscViewController: UIViewController {
         
     }
     @IBAction func nextSong(_ sender: UIButton) {
+        if index == playList!.count-1 {
+            index = 0;
+        }else{
+            index += 1;
+        }
+        self.music = playList![index];
+        setup();
+        self.playSong(UIButton());
     }
     
     @IBAction func musicList(_ sender: UIButton) {
+        
+    }
+    @objc func completePlayAction()  {
+        nextSong(UIButton());
+        print("--------+-+-------next");
+    }
+    
+    //MARK: private
+    private func dateFromTime(time:TimeInterval) -> String {
+        let date = Date.init(timeIntervalSince1970:time);
+        
+        let dfmatter = DateFormatter()
+        
+        dfmatter.dateFormat="m:ss"
+        
+        let dateStr = dfmatter.string(from: date)
+        return dateStr;
+    }
+    
+    private func switchModeBtn(mode:Int){
+        switch mode {
+        case  MusicModeType.runLoop.rawValue:
+            self.playModeBtn.setImage(#imageLiteral(resourceName: "单曲循环"), for: UIControlState.normal)
+            MusicPlayer.setLoop(true);
+            break;
+        case MusicModeType.allLoop.rawValue:
+            self.playModeBtn.setImage(#imageLiteral(resourceName: "循环播放"), for: UIControlState.normal)
+            MusicPlayer.setLoop(false);
+            playList = originList;
+            break;
+        case MusicModeType.randomLoop.rawValue:
+            self.playModeBtn.setImage(#imageLiteral(resourceName: "随机播放"), for: UIControlState.normal)
+            MusicPlayer.setLoop(false);
+            playList = Util.shuffleArray(arr:originList!)
+            break;
+        default:
+            break;
+        }
+        playMode = mode;
     }
 }
