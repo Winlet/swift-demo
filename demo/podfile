@@ -4,4 +4,6 @@ use_frameworks!
 target 'demo' do
 	pod 'CryptoSwift'
 	pod 'Alamofire'
+	pod 'RealmSwift'
+	pod 'SnapKit'
 end

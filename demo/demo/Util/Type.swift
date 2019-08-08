@@ -8,6 +8,12 @@
 
 import Foundation
 
+public enum Define {
+    static let docPath = NSHomeDirectory() + "/Documents"
+    static let rootPath = NSHomeDirectory() + "/Documents" + "/Downloads";
+    static let orderPath = NSHomeDirectory() + "/Documents" + "MusicList";
+}
+
 public enum MusicFromType : Int {
     /* QQ音乐*/
     case QQMusic = 100

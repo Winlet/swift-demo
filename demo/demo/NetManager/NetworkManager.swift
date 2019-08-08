@@ -15,25 +15,25 @@ class NetworkManager: NSObject {
     
     public func searchSong(keyword word:String,suc:@escaping (NSMutableArray)->Void,err:@escaping (NSError)->Void){
  
-//        var page = 1;
-//        var num = 20;
-//        self.searchSongFromQQMusic(keyword: word, page: &page, number: &num, suc: { (listMusic) in
-//            for music in listMusic{
-//                print((music as! Music).name!);
-//            }
-//            suc(listMusic);
-//        }) { (error) in
-//            err(error);
-//        }
-        
-        self.searchSongFrom163Music(keyword: word, suc: { (listMusic) in
+        var page = 1;
+        var num = 20;
+        self.searchSongFromQQMusic(keyword: word, page: &page, number: &num, suc: { (listMusic) in
             for music in listMusic{
                 print((music as! Music).name!);
             }
             suc(listMusic);
         }) { (error) in
             err(error);
-        };
+        }
+        
+//        self.searchSongFrom163Music(keyword: word, suc: { (listMusic) in
+//            for music in listMusic{
+//                print((music as! Music).name!);
+//            }
+//            suc(listMusic);
+//        }) { (error) in
+//            err(error);
+//        };
     }
 
     public func searchSongFromQQMusic(keyword word:String,page pageT:inout Int,number numberT:inout Int ,suc: @escaping (NSMutableArray)->Void , err:@escaping (NSError)->Void) {

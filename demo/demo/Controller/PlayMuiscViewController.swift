@@ -44,11 +44,10 @@ class PlayMuiscViewController: UIViewController {
         
     }
     func setup() {
-        MusicPlayer.playMusic(self.music.localPath!);
+        MusicPlayer.playMusic(Define.rootPath + "/" + self.music.localPath!);
         duration = Float(MusicPlayer.duration());
         self.endTimeLabel.text = self.dateFromTime(time:MusicPlayer.duration());
         index = playList?.firstIndex(of: music);
-        print(music.name);
     }
     
     // 2.开始计时

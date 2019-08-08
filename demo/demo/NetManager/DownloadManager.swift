@@ -56,20 +56,18 @@ class DownloadManager: NSObject {
     
     public func downloadSongForUrl(requestUrl:String,name:String, suc:@escaping ()->Void , err:@escaping (Error)->Void){
         
-        let ducumentPath = NSHomeDirectory() + "/Documents"
-        let localPath = ducumentPath + "/Downloads"
         let  fileManager = FileManager.default
         
-        let result = fileManager.fileExists(atPath: localPath)
+        let result = fileManager.fileExists(atPath:Define.rootPath)
         if result {
         }else{
             do {
-                try fileManager.createDirectory(atPath: localPath, withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(atPath: Define.rootPath, withIntermediateDirectories: true, attributes: nil)
             } catch  {
                 print("creat false %@",error)
             }
         }
-        let url = URL(fileURLWithPath:localPath);
+        let url = URL(fileURLWithPath:Define.rootPath);
         
         //下载存储路径
         let destination: DownloadRequest.DownloadFileDestination =  {_,response in

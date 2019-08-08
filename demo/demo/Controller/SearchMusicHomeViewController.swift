@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
 
@@ -80,7 +81,7 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
         let music = self.searchResultArray[indexPath.row] as! Music;
     
         var singerString = [String]();
-        for singer in music.singer! {
+        for singer in music.singer {
             singerString.append(singer.name!);
         }
         let temp = singerString.joined(separator: "/");
@@ -93,15 +94,16 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
         return 50;
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = PlayMuiscViewController();
+//        let vc = PlayMuiscViewController();
         let  music = self.searchResultArray[indexPath.row] as? Music;
         DownloadManager().download(music: music!, suc: {
+            StoreManager.insertMusic(by: music!);
             print("--------+-+-------");
         }) { (error) in
             print(error);
         }
-        vc.music = music;
-        self.navigationController?.pushViewController(vc, animated: true);
+//        vc.music = music;
+//        self.navigationController?.pushViewController(vc, animated: true);
     }
     
     

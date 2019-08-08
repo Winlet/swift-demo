@@ -30,7 +30,7 @@ class MyMusicHomeTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView();
         self.titleItem.title = "我的音乐";
         self.title = "我的音乐";
-        bottomShowArray.add("test");
+        bottomShowArray.add("敬请期待...");
     }
     // MARK: - Table view data source
 
@@ -64,9 +64,20 @@ class MyMusicHomeTableViewController: UITableViewController {
         return 100;
     }
     
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//       return UIView();
-//    }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 40));
+        let label = UILabel.init(frame: CGRect.init(x: 20, y: 10, width: 50, height: 20));
+        label.font = UIFont.init(name: "Helvetica-Bold", size: 16.0);
+        label.text = "歌单";
+        view.addSubview(label);
+
+        let button = UIButton.init(frame: CGRect.init(x: tableView.frame.size.width-30, y: 10, width: 20, height: 20))
+        button.setImage(#imageLiteral(resourceName: "加"), for: UIControlState.normal);
+        button.addTarget(self, action: #selector(addMusicOrder), for: UIControlEvents.touchUpInside);
+        view.addSubview(button);
+        view.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1);
+       return view;
+    }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -88,11 +99,9 @@ class MyMusicHomeTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true);
         switch indexPath.section {
         case 0:
-            if indexPath.row == 0{
-                self.performSegue(withIdentifier: "localDetail", sender: nil);
-            }else{
-                NSLog("asd");
-            }
+            let vc = storyboard?.instantiateViewController(withIdentifier: "localMVC") as! LocalMusicViewController;
+            vc.fromType = indexPath.row + 1;
+             self.navigationController?.pushViewController(vc, animated: true);
         case 1:
             NSLog("asd");
         default:
@@ -100,5 +109,7 @@ class MyMusicHomeTableViewController: UITableViewController {
         }
     }
    
-    
+    @objc func addMusicOrder(){
+        
+    }
 }

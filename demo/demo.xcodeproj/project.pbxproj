@@ -25,6 +25,10 @@
 		04F2B4292064AC8E00F642C3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B4282064AC8E00F642C3 /* NetworkManager.swift */; };
 		04F2B42C2064ACDB00F642C3 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B42B2064ACDB00F642C3 /* StoreManager.swift */; };
 		96827DC822F1A20E00937C91 /* QQ api in Resources */ = {isa = PBXBuildFile; fileRef = 96827DC722F1A20D00937C91 /* QQ api */; };
+		9692B9DD22FABC070028ABAC /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692B9DC22FABC070028ABAC /* LocalFileManager.swift */; };
+		9692B9DF22FAC5EA0028ABAC /* MusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692B9DE22FAC5EA0028ABAC /* MusicListView.swift */; };
+		9692B9E222FAC8B60028ABAC /* BehindLittleTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692B9E022FAC8B60028ABAC /* BehindLittleTitleTableViewCell.swift */; };
+		9692B9E322FAC8B60028ABAC /* BehindLittleTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9692B9E122FAC8B60028ABAC /* BehindLittleTitleTableViewCell.xib */; };
 		9696BA0522F3CD53005BC0C5 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696BA0422F3CD53005BC0C5 /* MusicPlayer.swift */; };
 		9696BA0722F3DDD6005BC0C5 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696BA0622F3DDD6005BC0C5 /* Type.swift */; };
 		96A3F56E22F279970095FE9B /* Singers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3F56D22F279970095FE9B /* Singers.swift */; };
@@ -92,6 +96,10 @@
 		3F0D47706892B0E6ECF855D4 /* Pods-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.debug.xcconfig"; sourceTree = "<group>"; };
 		695333ACCB91EBF3D3B5C069 /* Pods-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.release.xcconfig"; sourceTree = "<group>"; };
 		96827DC722F1A20D00937C91 /* QQ api */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "QQ api"; sourceTree = "<group>"; wrapsLines = 0; };
+		9692B9DC22FABC070028ABAC /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		9692B9DE22FAC5EA0028ABAC /* MusicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MusicListView.swift; path = demo/StoreManager/MusicListView.swift; sourceTree = SOURCE_ROOT; };
+		9692B9E022FAC8B60028ABAC /* BehindLittleTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BehindLittleTitleTableViewCell.swift; path = demo/StoreManager/BehindLittleTitleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		9692B9E122FAC8B60028ABAC /* BehindLittleTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BehindLittleTitleTableViewCell.xib; path = demo/StoreManager/BehindLittleTitleTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		9696BA0422F3CD53005BC0C5 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		9696BA0622F3DDD6005BC0C5 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		96A3F56D22F279970095FE9B /* Singers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singers.swift; sourceTree = "<group>"; };
@@ -132,6 +140,9 @@
 			children = (
 				96A3F56F22F297CB0095FE9B /* TableViewCell.swift */,
 				96A3F57022F297CB0095FE9B /* TableViewCell.xib */,
+				9692B9DE22FAC5EA0028ABAC /* MusicListView.swift */,
+				9692B9E022FAC8B60028ABAC /* BehindLittleTitleTableViewCell.swift */,
+				9692B9E122FAC8B60028ABAC /* BehindLittleTitleTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				04F2B42B2064ACDB00F642C3 /* StoreManager.swift */,
+				9692B9DC22FABC070028ABAC /* LocalFileManager.swift */,
 			);
 			path = StoreManager;
 			sourceTree = "<group>";
@@ -401,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9692B9E322FAC8B60028ABAC /* BehindLittleTitleTableViewCell.xib in Resources */,
 				041F2C7120626BD300B158A6 /* LaunchScreen.storyboard in Resources */,
 				96A3F57222F297CB0095FE9B /* TableViewCell.xib in Resources */,
 				041F2C6E20626BD300B158A6 /* Assets.xcassets in Resources */,
@@ -453,11 +466,17 @@
 				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -473,14 +492,17 @@
 			files = (
 				96A3F57122F297CB0095FE9B /* TableViewCell.swift in Sources */,
 				04F2B4292064AC8E00F642C3 /* NetworkManager.swift in Sources */,
+				9692B9DF22FAC5EA0028ABAC /* MusicListView.swift in Sources */,
 				04F2B42C2064ACDB00F642C3 /* StoreManager.swift in Sources */,
 				04D9610C2105E854007E89B3 /* LocalMusicViewController.swift in Sources */,
+				9692B9DD22FABC070028ABAC /* LocalFileManager.swift in Sources */,
 				96A3F56E22F279970095FE9B /* Singers.swift in Sources */,
 				04076CDB2063525E00E9C8EE /* MyMusicHomeTableViewController.swift in Sources */,
 				045702662079C2C0006BF094 /* extensions.swift in Sources */,
 				9696BA0722F3DDD6005BC0C5 /* Type.swift in Sources */,
 				04F2B42220649F2B00F642C3 /* SearchMusicHomeViewController.swift in Sources */,
 				9696BA0522F3CD53005BC0C5 /* MusicPlayer.swift in Sources */,
+				9692B9E222FAC8B60028ABAC /* BehindLittleTitleTableViewCell.swift in Sources */,
 				04F2B4242064A1A400F642C3 /* Music.swift in Sources */,
 				041F2C6920626BD300B158A6 /* ViewController.swift in Sources */,
 				04ED050320ECC9F000739D1D /* DownloadManager.swift in Sources */,

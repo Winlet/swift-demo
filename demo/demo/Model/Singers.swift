@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import RealmSwift
 
-class Singers: NSObject {
-    var singerID:String?
-    var name:String?
+class Singers: Object {
+    @objc dynamic var singerID:String?
+    @objc dynamic var name:String?
     
-    func initFromArray(array:Array<Dictionary<String, Any>>) -> Array<Singers> {
+    /// LinkingObjects 反向表示该对象的拥有者
+//    let owners = LinkingObjects(fromType:Music.self, property:"singer")
+    
+    func initFromArray(array:Array<Dictionary<String, Any>>) -> List<Singers> {
         var listArray = [Singers]();
         for singerDic in array {
             let Singer = Singers();
@@ -20,7 +24,9 @@ class Singers: NSObject {
             Singer.name = (singerDic["name"] as! String);
             listArray.append(Singer);
         }
-        return listArray;
+        let result = List<Singers>();
+        result.append(objectsIn: listArray);
+        return result;
     }
     
 }
