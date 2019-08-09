@@ -78,9 +78,10 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         self.tableView.dataSource = self;
         self.tableView.tableFooterView = UIView.init();
         self.tableView.register(UINib.init(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "showCell")
+       if fromType != 1 {
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(respondsFirst));
         self.tableView.addGestureRecognizer(tap);
-        
+        }
     }
     //MARK: -delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -144,10 +145,12 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
     }
     //MARK: Action
     @objc func respondsFirst(){
-        if self.allTableView.isHidden == false {
-            self.allTableView.isHidden = true;
-            let res = LocalFileManager.writeToLoopMusic(list: self.musicShowArray);
-            print(res);
+        if fromType != 1 {
+            if self.allTableView.isHidden == false {
+                self.allTableView.isHidden = true;
+                let res = LocalFileManager.writeToLoopMusic(list: self.musicShowArray);
+                print(res);
+            }
         }
     }
     
