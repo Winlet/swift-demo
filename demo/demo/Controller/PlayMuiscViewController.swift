@@ -48,6 +48,22 @@ class PlayMuiscViewController: UIViewController {
         duration = Float(MusicPlayer.duration());
         self.endTimeLabel.text = self.dateFromTime(time:MusicPlayer.duration());
         index = playList?.firstIndex(of: music);
+//        switch music.comeType! {
+//        case .QQMusic:
+//
+//        default:
+//            <#code#>
+//        }
+        NetworkManager.getLyricFromQQMusic(music: self.music);
+//        parseLyricWithUrl(song.lrclink, succeed: { (result) -> () in
+//            var lyricStr = ""
+//            for  lyric in result! {
+//                let songLyric = lyric as! SongLrc
+//                let lyricLine = songLyric.text as String
+//                lyricStr = lyricStr.stringByAppendingString(lyricLine).stringByAppendingString("\n")
+//            }
+//            succeedBlock(lyricStr)
+//        })
     }
     
     // 2.开始计时

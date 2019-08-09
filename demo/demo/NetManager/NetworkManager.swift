@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyXMLParser
 //import CryptoSwift
 
 
@@ -57,6 +58,7 @@ class NetworkManager: NSObject {
     func searchSongFrom163Music(keyword word:String ,suc:@escaping (NSMutableArray)->Void,err:@escaping (NSError)->Void) {
         let wordTemp = Util.urlEncoded(string: word);
         // https://music.aityp.com/
+        //https://music.163.com/api/search/get?s=%22123%22&type=1&limit=30&offset=0
         //http://music.163.com/song/media/outer/url?id=569212210
         let httpRequest = "https://music.aityp.com/search?keywords=\(wordTemp)";
         Alamofire.request(httpRequest).responseJSON{ (response) in
@@ -71,8 +73,36 @@ class NetworkManager: NSObject {
         }
     }
     
+    class func getLyricFromQQMusic(music:Music) {
+        let temp = String(format: "%d/%d.xml",Int(music.songID!)!%100,music.songID!);
+        let httpRequest = "http://music.qq.com/miniportal/static/lyric/" + temp;
+        Alamofire.request(httpRequest).response { (response) in
+            
+            let xml = try! XML.parse(response.data!)
+            let element = xml["lyric"];
+            let name = music.name! + "-" + music.songMid! + ".mp3";
+            
+            let res = LocalFileManager.writeLyric(string: element.text! as NSString, name: name);
+//            let element = xml.first as! Element//
+            print("--------+-+-------1",res);
+            print("--------+-+-------2");
+            print("--------+-+-------3");
+        }
+        
+        
+//        responseJSON { (response) in
+//            switch response.result{
+//            case .success(let dataResult):
+//                print("--------+-+-------");
+//            case .failure(let error):
+//                print("--------+-+-------");
+//            }
+//        }
+    }
+    
     func test(mid:String) -> String {
- 
+        "http://music.163.com/api/song/lyric?os=pc&id=569212210&lv=-1&kv=-1&tv=-1"
+        "http://music.qq.com/miniportal/static/lyric/87/4944987.xml"
         return "";
     }
 }

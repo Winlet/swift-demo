@@ -6,4 +6,5 @@ target 'demo' do
 	pod 'Alamofire'
 	pod 'RealmSwift'
 	pod 'SnapKit'
+	pod "SwiftyXMLParser"
 end

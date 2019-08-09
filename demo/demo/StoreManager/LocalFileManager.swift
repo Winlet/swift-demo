@@ -64,4 +64,12 @@ extension LocalFileManager {
         let localPath = Define.docPath + "/" + "loopMusics"
         try? fileManager.removeItem(atPath: localPath);
     }
+    
+    class public func writeLyric(string:NSString , name:String)->Bool {
+    
+        let localPath = Define.lyricPath + "/" + name
+        return ((try? string.write(toFile: localPath, atomically: false, encoding: String.Encoding.utf8.rawValue)) != nil);
+        
+    }
+    
 }

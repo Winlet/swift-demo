@@ -27,7 +27,7 @@ class StoreManager: Object {
     /// 配置数据库
     class func configRealm() {
         /// 如果要存储的数据模型属性发生变化,需要配置当前版本号比之前大
-        let dbVersion : UInt64 = 1
+        let dbVersion : UInt64 = 3
         
         let docPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as String
         let dbPath = docPath.appending("/MusicsDB.realm")

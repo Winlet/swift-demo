@@ -29,6 +29,7 @@
 		967E858C22FD5C6F002E52DE /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 967E858722FD5C6E002E52DE /* TableViewCell.xib */; };
 		967E858D22FD5C6F002E52DE /* MusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E858822FD5C6F002E52DE /* MusicListView.swift */; };
 		967E858E22FD5C6F002E52DE /* BehindLittleTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 967E858922FD5C6F002E52DE /* BehindLittleTitleTableViewCell.xib */; };
+		967E859022FD61B9002E52DE /* Lyric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E858F22FD61B9002E52DE /* Lyric.swift */; };
 		96827DC822F1A20E00937C91 /* QQ api in Resources */ = {isa = PBXBuildFile; fileRef = 96827DC722F1A20D00937C91 /* QQ api */; };
 		9692B9DD22FABC070028ABAC /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692B9DC22FABC070028ABAC /* LocalFileManager.swift */; };
 		9696BA0522F3CD53005BC0C5 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696BA0422F3CD53005BC0C5 /* MusicPlayer.swift */; };
@@ -100,6 +101,7 @@
 		967E858722FD5C6E002E52DE /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		967E858822FD5C6F002E52DE /* MusicListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicListView.swift; sourceTree = "<group>"; };
 		967E858922FD5C6F002E52DE /* BehindLittleTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BehindLittleTitleTableViewCell.xib; sourceTree = "<group>"; };
+		967E858F22FD61B9002E52DE /* Lyric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyric.swift; sourceTree = "<group>"; };
 		96827DC722F1A20D00937C91 /* QQ api */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "QQ api"; sourceTree = "<group>"; wrapsLines = 0; };
 		9692B9DC22FABC070028ABAC /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		9696BA0422F3CD53005BC0C5 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				04F2B4232064A1A400F642C3 /* Music.swift */,
 				96A3F56D22F279970095FE9B /* Singers.swift */,
+				967E858F22FD61B9002E52DE /* Lyric.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -477,6 +481,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -491,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F2B4292064AC8E00F642C3 /* NetworkManager.swift in Sources */,
+				967E859022FD61B9002E52DE /* Lyric.swift in Sources */,
 				04F2B42C2064ACDB00F642C3 /* StoreManager.swift in Sources */,
 				04D9610C2105E854007E89B3 /* LocalMusicViewController.swift in Sources */,
 				9692B9DD22FABC070028ABAC /* LocalFileManager.swift in Sources */,
