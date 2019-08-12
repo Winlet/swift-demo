@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyXMLParser
+import SWXMLHash
 //import CryptoSwift
 
 
@@ -74,30 +75,47 @@ class NetworkManager: NSObject {
     }
     
     class func getLyricFromQQMusic(music:Music) {
-        let temp = String(format: "%d/%d.xml",Int(music.songID!)!%100,music.songID!);
+//        let temp = Int(music.songID!)%100 + "/" + music.songID! + ".xml";
+        
+        let temp = String(format: "%d/%@.xml", Int(music.songID!)!%100,music.songID!)
         let httpRequest = "http://music.qq.com/miniportal/static/lyric/" + temp;
         Alamofire.request(httpRequest).response { (response) in
-            
-            let xml = try! XML.parse(response.data!)
-            let element = xml["lyric"];
-            let name = music.name! + "-" + music.songMid! + ".mp3";
-            
-            let res = LocalFileManager.writeLyric(string: element.text! as NSString, name: name);
-//            let element = xml.first as! Element//
-            print("--------+-+-------1",res);
-            print("--------+-+-------2");
-            print("--------+-+-------3");
-        }
-        
-        
-//        responseJSON { (response) in
-//            switch response.result{
-//            case .success(let dataResult):
-//                print("--------+-+-------");
-//            case .failure(let error):
-//                print("--------+-+-------");
+//            let xml1 = SWXMLHash.parse(response.data!)
+//            switch xml1 {
+//            case .xmlError(let error):
+//                print("--------+-+-------1");
+//                break;
+//            case .element(_):
+//                print("--------+-+-------12");
+//                break;
+//            case .list(_):
+//                print("--------+-+-------13");
+//                break;
+//            case .stream(_):
+//                print("--------+-+-------14");
+//                break;
+//            case .parsingError(_):
+//                print("--------+-+-------15");
+//                break;
 //            }
-//        }
+//            return;
+            let xml = try! XML.parse(response.data!)
+            switch xml {
+            case .failure(let error):
+                print("--------+-+-------1");
+                break;
+            case .singleElement(_):
+                print("--------+-+-------2");
+                let element = xml["lyric"];
+                let name = music.name! + "-" + music.songMid! + ".mp3";
+                let res = LocalFileManager.writeLyric(string: element.text! as NSString, name: name);
+                print("--------+-+-------10",res);
+                break;
+            case .sequence(_):
+                print("--------+-+-------3");
+                break;
+            }
+        }
     }
     
     func test(mid:String) -> String {

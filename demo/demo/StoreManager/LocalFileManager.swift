@@ -67,9 +67,26 @@ extension LocalFileManager {
     
     class public func writeLyric(string:NSString , name:String)->Bool {
     
-        let localPath = Define.lyricPath + "/" + name
-        return ((try? string.write(toFile: localPath, atomically: false, encoding: String.Encoding.utf8.rawValue)) != nil);
+        let  fileManager = FileManager.default
         
+        let result = fileManager.fileExists(atPath:Define.lyricPath)
+        if result {
+        }else{
+            do {
+                try fileManager.createDirectory(atPath: Define.lyricPath, withIntermediateDirectories: true, attributes: nil)
+            } catch  {
+                print("creat false %@",error)
+            }
+        }
+        
+        let localPath = Define.lyricPath + "/" + name
+        do {
+            try string.write(toFile: localPath, atomically: false, encoding: String.Encoding.utf8.rawValue)
+        } catch let error{
+                print(error);
+                 return false;
+        }
+       return true;
     }
     
 }

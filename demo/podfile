@@ -7,4 +7,5 @@ target 'demo' do
 	pod 'RealmSwift'
 	pod 'SnapKit'
 	pod "SwiftyXMLParser"
+	pod 'SWXMLHash'
 end

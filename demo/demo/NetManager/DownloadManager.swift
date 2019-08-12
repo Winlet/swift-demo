@@ -37,7 +37,7 @@ class DownloadManager: NSObject {
                 let dic = (data as! Dictionary<String,Any>)["data"];
                 let array = (dic as! Dictionary<String,Any>)["items"];
                 let vkey = (array as! Array<Dictionary<String,Any>>).first!["vkey"];
-                //file type wrong ...
+                //file type wrong ...vkey 为空
                 let downloadUrl = "http://dl.stream.qqmusic.qq.com/\(filename)?vkey=\(vkey ?? "" )&guid=\(guid)&uin=0&fromtag=66";
                 let uuid = name + "-" + mid;
                 self.downloadSongForUrl(requestUrl: downloadUrl, name: uuid, suc: suc, err: err);
