@@ -29,24 +29,40 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lsc-QS-UQo">
-                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="160" width="375" height="458"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kgf-Zv-VGh">
+                                <rect key="frame" x="0.0" y="120" width="375" height="41"/>
+                                <segments>
+                                    <segment title="QQ"/>
+                                    <segment title="网易云"/>
+                                    <segment title="..."/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchAction:" destination="9NO-6Q-rh3" eventType="valueChanged" id="7bz-bf-ERh"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Kgf-Zv-VGh" secondAttribute="trailing" id="3ZA-dW-2v4"/>
                             <constraint firstItem="era-br-NgO" firstAttribute="top" secondItem="cR1-VG-Wlv" secondAttribute="bottom" id="BVX-1V-hQw"/>
                             <constraint firstItem="lsc-QS-UQo" firstAttribute="leading" secondItem="xP9-p5-V9u" secondAttribute="leading" id="Cg1-Ed-LTc"/>
-                            <constraint firstItem="lsc-QS-UQo" firstAttribute="top" secondItem="era-br-NgO" secondAttribute="bottom" id="EXL-NW-7tf"/>
+                            <constraint firstItem="lsc-QS-UQo" firstAttribute="top" secondItem="era-br-NgO" secondAttribute="bottom" constant="40" id="EXL-NW-7tf"/>
                             <constraint firstItem="Glq-cN-3Ra" firstAttribute="top" secondItem="lsc-QS-UQo" secondAttribute="bottom" id="KSa-fI-LCP"/>
+                            <constraint firstItem="Kgf-Zv-VGh" firstAttribute="leading" secondItem="xP9-p5-V9u" secondAttribute="leading" id="Rmc-OT-yBa"/>
+                            <constraint firstItem="Kgf-Zv-VGh" firstAttribute="top" secondItem="era-br-NgO" secondAttribute="bottom" id="UvG-du-bQg"/>
                             <constraint firstItem="era-br-NgO" firstAttribute="leading" secondItem="xP9-p5-V9u" secondAttribute="leading" id="jky-yR-53s"/>
                             <constraint firstItem="era-br-NgO" firstAttribute="trailing" secondItem="xP9-p5-V9u" secondAttribute="trailing" id="jsD-mT-Sdu"/>
                             <constraint firstAttribute="trailing" secondItem="lsc-QS-UQo" secondAttribute="trailing" id="qXD-dX-jLw"/>
+                            <constraint firstItem="lsc-QS-UQo" firstAttribute="top" secondItem="Kgf-Zv-VGh" secondAttribute="bottom" id="tZn-8x-aZi"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="搜索" image="搜索(1)" id="ZST-0d-9dP"/>
                     <connections>
                         <outlet property="searchBar" destination="era-br-NgO" id="6X5-Nk-gNd"/>
+                        <outlet property="switchFromSegmented" destination="Kgf-Zv-VGh" id="1PZ-x7-Ngs"/>
                         <outlet property="tableview" destination="lsc-QS-UQo" id="RQo-5s-vWg"/>
                         <outlet property="titleItem" destination="ZST-0d-9dP" id="s1r-RU-MDv"/>
                         <segue destination="Puc-Xq-YdG" kind="showDetail" identifier="musicPlayer" id="C6v-LI-AzB"/>
@@ -54,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vLt-jH-Zl0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1679" y="607"/>
+            <point key="canvasLocation" x="-1679.2" y="606.74662668665667"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yHc-Tt-K7M">
@@ -196,16 +212,27 @@
                                     <constraint firstItem="FR0-E8-B2W" firstAttribute="top" secondItem="sII-8n-dSd" secondAttribute="top" constant="7" id="uTH-fR-71g"/>
                                 </constraints>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0AN-3n-eYi">
+                                <rect key="frame" x="32" y="46" width="311" height="495"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="sII-8n-dSd" firstAttribute="top" secondItem="0AN-3n-eYi" secondAttribute="bottom" constant="26" id="6ZB-7N-t91"/>
+                            <constraint firstItem="0AN-3n-eYi" firstAttribute="top" secondItem="Ehb-3v-u9t" secondAttribute="bottom" constant="26" id="7bL-r4-0f5"/>
                             <constraint firstItem="sII-8n-dSd" firstAttribute="leading" secondItem="Iyg-Uu-Q1u" secondAttribute="leading" id="80s-nu-fu6"/>
                             <constraint firstAttribute="trailing" secondItem="sII-8n-dSd" secondAttribute="trailing" id="ItW-bB-C9M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0AN-3n-eYi" secondAttribute="trailing" constant="16" id="NK2-5J-RFV"/>
+                            <constraint firstItem="0AN-3n-eYi" firstAttribute="leading" secondItem="Iyg-Uu-Q1u" secondAttribute="leadingMargin" constant="16" id="bfy-Um-rtJ"/>
                             <constraint firstItem="nJo-7l-fpW" firstAttribute="top" secondItem="sII-8n-dSd" secondAttribute="bottom" id="leU-8i-3g8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="endTimeLabel" destination="kEO-Yg-GRv" id="Din-e5-6Tl"/>
+                        <outlet property="lycirTextView" destination="0AN-3n-eYi" id="7D6-PS-94C"/>
                         <outlet property="playBtn" destination="5Bn-dd-vn0" id="jle-7b-b1n"/>
                         <outlet property="playModeBtn" destination="jvh-fH-SJK" id="hHD-yL-JXZ"/>
                         <outlet property="progressSlider" destination="FR0-E8-B2W" id="XQR-yo-kxQ"/>
@@ -354,6 +381,6 @@
         <image name="音乐列表" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KjL-Pn-h6W"/>
+        <segue reference="C6v-LI-AzB"/>
     </inferredMetricsTieBreakers>
 </document>

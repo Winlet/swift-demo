@@ -28,6 +28,15 @@ class DownloadManager: NSObject {
     
     
     func downloadFromQQMusic(mid:String,name:String,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
+        
+        /*私人api 存在日后维护问题*/
+        let uuid = name + "-" + mid;
+        let downloadUrl = "https://api.bzqll.com/music/tencent/url?key=579621905&id=\(mid)&br=320"
+        self.downloadSongForUrl(requestUrl: downloadUrl, name: uuid, suc: suc, err: err);
+        return;
+        /*原方法 部分歌曲无法下载
+         但它是通用官方的api
+         */
         let guid = "8383045540";
         let filename = "C400"+mid+".m4a";
         let requestUrl = "https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg?g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&cid=205361747&uin=0&songmid=\(mid)&filename=\(filename)&guid=\(guid)"

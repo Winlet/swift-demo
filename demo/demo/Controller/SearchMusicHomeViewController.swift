@@ -14,7 +14,10 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
     @IBOutlet weak var titleItem: UITabBarItem!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var switchFromSegmented: UISegmentedControl!
+    
     var searchResultArray = NSMutableArray();
+    var fromType : MusicFromType!;
     
     
     override func viewDidLoad() {
@@ -37,6 +40,7 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
         self.tableview.delegate = self;
         self.tableview.dataSource = self;
         self.tableview.register(UINib.init(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "searchCell")
+        fromType = .QQMusic;
 //        let gesture = UITapGestureRecognizer(target:self ,action: #selector(SearchMusicHomeViewController.handleTap));
 //        self.view.addGestureRecognizer(gesture)
         
@@ -54,7 +58,7 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
         
         let text = searchBar.text!
         print(text);
-        NetworkManager().searchSong(keyword:text, suc: { (listMusic) in
+        NetworkManager().searchSong(keyword:text,from:fromType,suc: { (listMusic) in
             self.searchResultArray = listMusic;
             self.tableview.reloadData();
         }) { (error) in
@@ -106,6 +110,18 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
 //        self.navigationController?.pushViewController(vc, animated: true);
     }
     
+    //MARK: - Action
+    @IBAction func switchAction(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0: fromType = .QQMusic;break
+        
+        case 1:fromType = .NTESMusic; break
+            
+        case 2: break
+        default:
+            break;
+        }
+    }
     
 //    self.performSegue(withIdentifier: "musicPlayer", sender: self.searchResultArray[indexPath.row]);
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

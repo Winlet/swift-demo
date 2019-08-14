@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate {
     @IBOutlet weak var headView: UIView!
     @IBOutlet weak var tableView: UITableView!
     //    var musicShowArray = NSMutableArray();
@@ -80,7 +80,8 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         self.tableView.register(UINib.init(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "showCell")
        if fromType != 1 {
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(respondsFirst));
-        self.tableView.addGestureRecognizer(tap);
+        tap.delegate = self;
+        self.view.addGestureRecognizer(tap);
         }
     }
     //MARK: -delegate
@@ -175,6 +176,12 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         }, completion: nil);
     }
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if NSStringFromClass((touch.view?.classForCoder)!) == "UITableViewCellContentView" {
+            return false
+        }
+        return true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

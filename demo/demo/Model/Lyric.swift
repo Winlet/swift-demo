@@ -21,17 +21,18 @@ class Lyric: NSObject {
 /**
  *解析歌词
  */
-func parseLyricWithUrl(urlString:NSString, succeed:(NSArray?)->()){
-    if ( urlString.length < 2 ){
+func parseLyricWithUrl(urlString:String, succeed:(NSArray?)->()){
+    if (urlString.isEmpty){
         return
     }
-    let url : NSURL = NSURL(string:urlString as String)!
+//    let url : NSURL = NSURL(string:urlString as String)!
     //    let lyc : NSString = NSString(contentsOfURL: url, encoding:NSUTF8StringEncoding) as NSString
     
     var lyc:NSString = ""
     
     do {
-        lyc = try String(contentsOf:url as URL, encoding:String.Encoding.utf8) as NSString
+        lyc = try String(contentsOfFile: urlString, encoding: String.Encoding.utf8) as NSString
+//        lyc = try String(contentsOf:url as URL, encoding:String.Encoding.utf8) as NSString
     } catch {
         
     }
@@ -65,15 +66,15 @@ func parseLyricWithUrl(urlString:NSString, succeed:(NSArray?)->()){
                     let mm:NSString = content.substring(with: NSMakeRange(6, 2)) as NSString
                     let time:NSString = NSString(format: "%@:%@.%@", minute,second,mm)
                     let total:NSNumber = NSNumber(value: minute.integerValue * 60 + second.integerValue)
-                    var lyric:NSString = item.substring(from: 10) as NSString
+                    let lyric:NSString = item.substring(from: 10) as NSString
                     
                     let songLrc:Lyric = Lyric()
                     songLrc.total=total//开始显示的秒数
                     songLrc.time=time//开始显示时间
                     
-                    if lyric.length == 0 {
-                        lyric = "。。。。。。。"
-                    }
+//                    if lyric.length == 0 {
+//                        lyric = "。。。。。。。"
+//                    }
                     
                     songLrc.text=lyric//显示的歌词
                     result.add(songLrc)
@@ -82,7 +83,7 @@ func parseLyricWithUrl(urlString:NSString, succeed:(NSArray?)->()){
             
         }
     }
-    if result.count > 0 {
+//    if result.count > 0 {
         succeed(result)
-    }
+//    }
 }

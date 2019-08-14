@@ -79,13 +79,18 @@ extension LocalFileManager {
             }
         }
         
-        let localPath = Define.lyricPath + "/" + name
-        do {
-            try string.write(toFile: localPath, atomically: false, encoding: String.Encoding.utf8.rawValue)
-        } catch let error{
+        if string != "" {
+            let localPath = Define.lyricPath + "/" + name
+            do {
+                try string.write(toFile: localPath, atomically: false, encoding: String.Encoding.utf8.rawValue)
+            } catch let error{
                 print(error);
-                 return false;
+                return false;
+            }
+        }else{
+            return false;
         }
+       
        return true;
     }
     

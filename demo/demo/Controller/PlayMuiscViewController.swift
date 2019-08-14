@@ -21,6 +21,7 @@ class PlayMuiscViewController: UIViewController {
     @IBOutlet weak var playModeBtn: UIButton!
     @IBOutlet weak var playBtn: UIButton!
     
+    @IBOutlet weak var lycirTextView: UITextView!
     var timer : Timer?
     var duration : Float?
     var playMode : Int!;
@@ -48,22 +49,31 @@ class PlayMuiscViewController: UIViewController {
         duration = Float(MusicPlayer.duration());
         self.endTimeLabel.text = self.dateFromTime(time:MusicPlayer.duration());
         index = playList?.firstIndex(of: music);
-//        switch music.comeType! {
-//        case .QQMusic:
-//
-//        default:
-//            <#code#>
-//        }
-        NetworkManager.getLyricFromQQMusic(music: self.music);
-//        parseLyricWithUrl(song.lrclink, succeed: { (result) -> () in
-//            var lyricStr = ""
-//            for  lyric in result! {
-//                let songLyric = lyric as! SongLrc
-//                let lyricLine = songLyric.text as String
-//                lyricStr = lyricStr.stringByAppendingString(lyricLine).stringByAppendingString("\n")
-//            }
-//            succeedBlock(lyricStr)
-//        })
+
+        var urlStr = "";
+        switch music.comeType{
+        case .QQMusic?:
+            urlStr = Define.lyricPath + "/" + self.music.name! + "-" + self.music.songMid! + ".mp3"
+            break
+        case .NTESMusic?:
+            urlStr = Define.lyricPath + "/" + self.music.name! + "-" + self.music.songID! + ".mp3"
+            break
+        default: break
+        }
+      
+        parseLyricWithUrl(urlString: urlStr, succeed: { (result) -> () in
+            var lyricStr = ""
+            for  lyric in result! {
+                let songLyric = lyric as! Lyric
+                let lyricLine = songLyric.text as String
+                lyricStr = lyricStr.appendingFormat(lyricLine).appendingFormat("\n")
+            }
+            if lyricStr.isEmpty {
+                NetworkManager.getLyricFromMusic(music: self.music);
+            }else{
+                self.lycirTextView.text = lyricStr;
+            }
+        })
     }
     
     // 2.开始计时
