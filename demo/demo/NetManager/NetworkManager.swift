@@ -67,10 +67,11 @@ class NetworkManager: NSObject {
     
     func searchSongFrom163Music(keyword word:String ,suc:@escaping (NSMutableArray)->Void,err:@escaping (NSError)->Void) {
         let wordTemp = Util.urlEncoded(string: word);
-        // https://music.aityp.com/
-        //https://music.163.com/api/search/get?s=%22123%22&type=1&limit=30&offset=0
+     
+        //"https://music.aityp.com/search?keywords=\(wordTemp)";
         //http://music.163.com/song/media/outer/url?id=569212210
-        let httpRequest = "https://music.aityp.com/search?keywords=\(wordTemp)";
+
+        let httpRequest = "https://music.163.com/api/search/get?s=\(wordTemp)&type=1&limit=30&offset=0";
         Alamofire.request(httpRequest).responseJSON{ (response) in
             switch response.result{
             case .success(let dataResult):
