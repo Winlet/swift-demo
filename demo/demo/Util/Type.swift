@@ -13,6 +13,7 @@ public enum Define {
     static let rootPath = NSHomeDirectory() + "/Documents" + "/Downloads";
     static let lyricPath = NSHomeDirectory() + "/Documents" + "/Lyrics";
     static let orderPath = NSHomeDirectory() + "/Documents" + "/MusicList";
+    static let listKey = "songList";
 }
 
 public enum MusicFromType : Int {

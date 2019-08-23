@@ -67,4 +67,38 @@ extension LocalFileManager {
         return true;
     }
     
+    class public func readSongList() -> Array<String>{
+        var temp : [String];
+        let arr = UserDefaults.standard.value(forKey: Define.listKey)
+        if arr != nil {
+            temp = Array.init(arr as! Array);
+        }else{
+            temp = Array.init();
+        }
+        return temp;
+    }
+    class public func createSongList(name:String) {
+        var temp : [String];
+        let arr = UserDefaults.standard.value(forKey: Define.listKey)
+        if arr != nil {
+            temp = Array.init(arr as! Array);
+        }else{
+            temp = Array.init();
+        }
+        temp.append(name);
+        UserDefaults.standard.set(temp, forKey:Define.listKey);
+    }
+    class public func deleteSongList(name:String) {
+        var temp : [String];
+        let arr = UserDefaults.standard.value(forKey: Define.listKey)
+        if arr != nil {
+            temp = Array.init(arr as! Array);
+        }else{
+            temp = Array.init();
+        }
+    
+       let index = temp.index(of: name)
+        temp.remove(at: index!);
+        UserDefaults.standard.set(temp, forKey:Define.listKey);
+    }
 }

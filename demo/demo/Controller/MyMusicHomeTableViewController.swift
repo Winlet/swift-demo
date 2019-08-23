@@ -13,7 +13,7 @@ class MyMusicHomeTableViewController: UITableViewController {
     @IBOutlet weak var titleItem: UITabBarItem!
     
     var topShowArray : [NSString] = ["本地歌单","循环列表"];
-    var bottomShowArray = NSMutableArray();
+    var bottomShowArray = Array<String>();
     
     
     override func viewDidLoad() {
@@ -30,7 +30,8 @@ class MyMusicHomeTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView();
         self.titleItem.title = "我的音乐";
         self.title = "我的音乐";
-        bottomShowArray.add("敬请期待...");
+//        bottomShowArray.add("敬请期待...");
+        bottomShowArray = LocalFileManager.readSongList();
     }
     // MARK: - Table view data source
 
@@ -108,8 +109,44 @@ class MyMusicHomeTableViewController: UITableViewController {
             break;
         }
     }
-   
-    @objc func addMusicOrder(){
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+        if indexPath.section==1 {
+                return true
+        }else{
+            return false
+        }
         
+    }
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?{
+        return "删除"
+    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            
+            let str = self.bottomShowArray[indexPath.row];
+            LocalFileManager.deleteSongList(name:str);
+            self.bottomShowArray.remove(at: indexPath.row);
+            //刷新tableview
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            
+        }
+    }
+    @objc func addMusicOrder(){
+        let alert = UIAlertController.init(title: "新建歌单", message: nil, preferredStyle: .alert);
+        alert.addTextField { (textField) in
+            textField.placeholder = "歌单标题";
+        }
+        let cancel = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+        let enter = UIAlertAction.init(title: "确定", style: .default) { (action) in
+            let name = alert.textFields?.first?.text;
+            LocalFileManager.createSongList(name: name!);
+            self.bottomShowArray = LocalFileManager.readSongList()
+            self.tableView.reloadData();
+        }
+        alert.addAction(cancel);
+        alert.addAction(enter);
+        self.present(alert, animated: true, completion: nil);
     }
 }

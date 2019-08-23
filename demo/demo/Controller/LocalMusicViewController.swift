@@ -118,6 +118,7 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true);
         if tableView == self.tableView {
             let vc = storyboard?.instantiateViewController(withIdentifier: "playVC") as! PlayMuiscViewController;
