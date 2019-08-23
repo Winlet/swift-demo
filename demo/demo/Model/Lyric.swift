@@ -60,13 +60,13 @@ func parseLyricWithUrl(urlString:String, succeed:(NSArray?)->()){
             }else{
                 let content:NSString = item.substring(with: NSMakeRange(startrange.location+1, stoprange.location-startrange.location-1)) as NSString
                 //歌词有时间
-                if (content.length == 8) {
+                if (content.length >= 8) {
                     let minute:NSString = content.substring(with: NSMakeRange(0, 2)) as NSString
                     let second:NSString = content.substring(with: NSMakeRange(3, 2)) as NSString
                     let mm:NSString = content.substring(with: NSMakeRange(6, 2)) as NSString
                     let time:NSString = NSString(format: "%@:%@.%@", minute,second,mm)
                     let total:NSNumber = NSNumber(value: minute.integerValue * 60 + second.integerValue)
-                    let lyric:NSString = item.substring(from: 10) as NSString
+                    let lyric:NSString = item.substring(from: content.length+2) as NSString
                     
                     let songLrc:Lyric = Lyric()
                     songLrc.total=total//开始显示的秒数

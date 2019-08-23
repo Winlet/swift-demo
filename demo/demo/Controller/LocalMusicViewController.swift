@@ -39,25 +39,17 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         }else{
             self.headView.isHidden = false;
             self.allTableView.isHidden = true;
-            return LocalFileManager.getLoopMusic();
+            return StoreManager.getLoopMusic();
         }
         
     }()
     
-//     var allMusicArray : Array<Music> = {
-//        if self.lazyClear == 1 {
-//            return LocalFileManager.getLastLoopMusic();
-//        }else{
-//            return allMusicArray;
-//        }
-//
-//    }()
     var allMusicATemp : Array<Music>!
     var  allMusicArray : Array<Music> {
         get{
             if lazyClear {
                 lazyClear = false;
-                allMusicATemp = LocalFileManager.getLastLoopMusic()
+                allMusicATemp = StoreManager.getLastLoopMusic()
                 return allMusicATemp;
             }else{
                 return allMusicATemp;
@@ -127,8 +119,6 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true);
-        
-        
         if tableView == self.tableView {
             let vc = storyboard?.instantiateViewController(withIdentifier: "playVC") as! PlayMuiscViewController;
             let music = self.musicShowArray[indexPath.row];
@@ -142,14 +132,30 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
             self.tableView.reloadData();
             self.allTableView.reloadData();
         }
-        
     }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?{
+        return "删除"
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            
+            let music = self.musicShowArray[indexPath.row];
+            StoreManager.deleteMusic(by: music);
+            self.musicShowArray.remove(at: indexPath.row);
+            //刷新tableview
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        }
+    }
+ 
     //MARK: Action
     @objc func respondsFirst(){
         if fromType != 1 {
             if self.allTableView.isHidden == false {
                 self.allTableView.isHidden = true;
-                let res = LocalFileManager.writeToLoopMusic(list: self.musicShowArray);
+                let res = StoreManager.writeToLoopMusic(list: self.musicShowArray);
                 print(res);
             }
         }
@@ -161,7 +167,7 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         
         lazyClear = true;
         
-        LocalFileManager.clearLoopMusic();
+        StoreManager.clearLoopMusic();
     }
     
     @IBAction func addAction(_ sender: UIButton) {

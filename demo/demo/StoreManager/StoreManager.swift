@@ -55,10 +55,16 @@ extension StoreManager {
             defaultRealm.add(music)
         }
     }
-    
+    //删
     public class func deleteMusic(by music : Music){
         let defaultRealm = self.getDB()
+        print(LocalFileManager.deleteLyric(key:music.localPath!));
+        print(LocalFileManager.deleteMusicFile(key:music.localPath!));
+        
         try! defaultRealm.write {
+            
+            defaultRealm.delete(music.songLists);
+            defaultRealm.delete(music.singer);
             defaultRealm.delete(music)
 //            realm.delete(dogs) // 删除单个数据 删除多个数据
 //            realm.deleteAll() // 从 Realm 中删除所有数据
@@ -75,7 +81,7 @@ extension StoreManager {
         }
         return results;
     }
-    
+    //查
     public class func queryMusic(by path:String) -> Music{
         let realm = self.getDB();
         var music : Music!;
@@ -83,5 +89,83 @@ extension StoreManager {
         music = realm.object(ofType: Music.self, forPrimaryKey: path);
         }
         return music;
+    }
+    //MARK: 循环列表存储
+    //获取循环列表
+    class public func getLoopMusic() -> Array<Music> {
+        var result = [Music]();
+        
+        let defaultRealm = self.getDB()
+        do {
+            try defaultRealm.write {
+                let allList = defaultRealm.objects(Music.self);
+                for music in allList{
+                    if (music.songLists.index(matching: "name == %@","loop" as Any) != nil){
+                        result.append(music);
+                    }
+                }
+            }
+        } catch let error {
+            print(error);
+        }
+        return result;
+    }
+    
+    //所以歌曲-循环列表
+    class public func getLastLoopMusic() -> Array<Music>{
+        var result = [Music]();
+        
+        let defaultRealm = self.getDB()
+        do {
+            try defaultRealm.write {
+                let allList = defaultRealm.objects(Music.self);
+                for music in allList{
+                    if (music.songLists.filter("name == %@","loop" as Any).count == 0){
+                        result.append(music);
+                    }
+                }
+            }
+        } catch let error {
+            print(error);
+        }
+        return result;
+    }
+    //存入循环列表
+    class public func writeToLoopMusic(list:Array<Music>)->Bool {
+        
+        let defaultRealm = self.getDB()
+        do {
+            try defaultRealm.write {
+                let s = SongList.init();
+                s.name = "loop";
+                for music in list{
+                    if (music.songLists.filter("name == %@","loop" as Any).count == 0){
+                        music.songLists.append(s);
+                    }
+                }
+            }
+        } catch let error {
+            print(error);
+            return false;
+        }
+        return true;
+    }
+    //清空
+    class public func clearLoopMusic() {
+        let defaultRealm = self.getDB()
+        do {
+            try defaultRealm.write {
+                let allList = defaultRealm.objects(Music.self);
+                for music in allList{
+                        let index = music.songLists.index(matching: "name == %@","loop" as Any);
+                        if index != nil {
+                            let sa = music.songLists[index!];
+                            defaultRealm.delete(sa);
+                        }
+                }
+            }
+        } catch let error {
+            print(error);
+        }
     }
 }

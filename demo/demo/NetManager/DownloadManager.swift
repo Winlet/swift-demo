@@ -31,7 +31,7 @@ class DownloadManager: NSObject {
         
         /*私人api 存在日后维护问题*/
         let uuid = name + "-" + mid;
-        let downloadUrl = "https://api.bzqll.com/music/tencent/url?key=579621905&id=\(mid)&br=320"
+        let downloadUrl = "https://v1.itooi.cn/tencent/url?id=\(mid)&quality=128"
         self.downloadSongForUrl(requestUrl: downloadUrl, name: uuid, suc: suc, err: err);
         return;
         /*原方法 部分歌曲无法下载

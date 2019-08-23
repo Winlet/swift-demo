@@ -21,18 +21,23 @@ class Music: Object {
     
     
     var singer = List<Singers>();//歌手列表
+    var songLists = List<SongList>();//所属歌单列表
+    
     
     @objc dynamic var songTime:String?;   //发布时间 TODO:后期转专辑对象属性
     
     //所属枚举对应的get、set方法
     var comeType: MusicFromType? {
         get {
-            return MusicFromType(rawValue: type)
+            return MusicFromType(rawValue: type);
         }
         set {
             type = newValue?.rawValue ?? 0
         }
     }
+    
+    
+    
     //设置主键
     override class func primaryKey() -> String? {
         return "localPath"

@@ -101,6 +101,7 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
 //        let vc = PlayMuiscViewController();
         let  music = self.searchResultArray[indexPath.row] as? Music;
         DownloadManager().download(music: music!, suc: {
+//            music?.songList ;
             StoreManager.insertMusic(by: music!);
             print("--------+-+-------");
         }) { (error) in

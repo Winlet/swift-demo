@@ -36,6 +36,7 @@
 		9696BA0722F3DDD6005BC0C5 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696BA0622F3DDD6005BC0C5 /* Type.swift */; };
 		96A3F56E22F279970095FE9B /* Singers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3F56D22F279970095FE9B /* Singers.swift */; };
 		96A3F57522F2DD8C0095FE9B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3F57422F2DD8C0095FE9B /* Util.swift */; };
+		96B064EB230E310800594C35 /* SongList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B064EA230E310800594C35 /* SongList.swift */; };
 		B3E41FFE25B7C36BB63BC3A1 /* Pods_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A44054AF70A9CF45C4D7BE /* Pods_demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,7 @@
 		9696BA0622F3DDD6005BC0C5 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		96A3F56D22F279970095FE9B /* Singers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singers.swift; sourceTree = "<group>"; };
 		96A3F57422F2DD8C0095FE9B /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		96B064EA230E310800594C35 /* SongList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				04F2B4232064A1A400F642C3 /* Music.swift */,
 				96A3F56D22F279970095FE9B /* Singers.swift */,
 				967E858F22FD61B9002E52DE /* Lyric.swift */,
+				96B064EA230E310800594C35 /* SongList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				04076CDB2063525E00E9C8EE /* MyMusicHomeTableViewController.swift in Sources */,
 				045702662079C2C0006BF094 /* extensions.swift in Sources */,
 				9696BA0722F3DDD6005BC0C5 /* Type.swift in Sources */,
+				96B064EB230E310800594C35 /* SongList.swift in Sources */,
 				04F2B42220649F2B00F642C3 /* SearchMusicHomeViewController.swift in Sources */,
 				9696BA0522F3CD53005BC0C5 /* MusicPlayer.swift in Sources */,
 				967E858B22FD5C6F002E52DE /* TableViewCell.swift in Sources */,
