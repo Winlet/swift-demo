@@ -11,7 +11,7 @@ import Alamofire
 
 class DownloadManager: NSObject {
     
-    func download(music:Music,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
+    func download(music:Music,progerss:@escaping (CGFloat)->Void ,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
         
         switch music.comeType{
         case .QQMusic?:

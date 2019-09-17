@@ -19,6 +19,7 @@ class MyMusicHomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
+
     }
     
     override func didReceiveMemoryWarning() {

@@ -37,6 +37,7 @@
 		96A3F56E22F279970095FE9B /* Singers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3F56D22F279970095FE9B /* Singers.swift */; };
 		96A3F57522F2DD8C0095FE9B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3F57422F2DD8C0095FE9B /* Util.swift */; };
 		96B064EB230E310800594C35 /* SongList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B064EA230E310800594C35 /* SongList.swift */; };
+		96C50F70233077C2003A1AF1 /* IMOSuspendedBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C50F6F233077C2003A1AF1 /* IMOSuspendedBallView.swift */; };
 		B3E41FFE25B7C36BB63BC3A1 /* Pods_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A44054AF70A9CF45C4D7BE /* Pods_demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		96A3F56D22F279970095FE9B /* Singers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singers.swift; sourceTree = "<group>"; };
 		96A3F57422F2DD8C0095FE9B /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		96B064EA230E310800594C35 /* SongList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongList.swift; sourceTree = "<group>"; };
+		96C50F6F233077C2003A1AF1 /* IMOSuspendedBallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMOSuspendedBallView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +280,7 @@
 		967E858422FD5BFC002E52DE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				96C50F6F233077C2003A1AF1 /* IMOSuspendedBallView.swift */,
 				967E858522FD5C6E002E52DE /* BehindLittleTitleTableViewCell.swift */,
 				967E858922FD5C6F002E52DE /* BehindLittleTitleTableViewCell.xib */,
 				967E858822FD5C6F002E52DE /* MusicListView.swift */,
@@ -515,6 +518,7 @@
 				967E858B22FD5C6F002E52DE /* TableViewCell.swift in Sources */,
 				04F2B4242064A1A400F642C3 /* Music.swift in Sources */,
 				041F2C6920626BD300B158A6 /* ViewController.swift in Sources */,
+				96C50F70233077C2003A1AF1 /* IMOSuspendedBallView.swift in Sources */,
 				967E858D22FD5C6F002E52DE /* MusicListView.swift in Sources */,
 				04ED050320ECC9F000739D1D /* DownloadManager.swift in Sources */,
 				967E858A22FD5C6F002E52DE /* BehindLittleTitleTableViewCell.swift in Sources */,

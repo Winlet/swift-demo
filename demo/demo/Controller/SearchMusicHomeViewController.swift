@@ -18,12 +18,13 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
     
     var searchResultArray = NSMutableArray();
     var fromType : MusicFromType!;
-    
+    var suspendBall : IMOSuspendedBallView?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
-    
+        
+//        self.view.addSubview()
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,7 +101,10 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let vc = PlayMuiscViewController();
         let  music = self.searchResultArray[indexPath.row] as? Music;
-        DownloadManager().download(music: music!, suc: {
+ 
+        DownloadManager().download(music: music!,progerss:{ (precent) in
+            IMOSuspendedBallView.shared.progress(p: precent);
+        }, suc: {
 //            music?.songList ;
             StoreManager.insertMusic(by: music!);
             print("--------+-+-------");
@@ -115,13 +119,16 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
     @IBAction func switchAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0: fromType = .QQMusic;break
-        
+            
         case 1:fromType = .NTESMusic; break
             
-        case 2: break
+        case 2:
+           IMOSuspendedBallView.shared.addNum();
+        break
         default:
             break;
         }
+        
     }
     
 //    self.performSegue(withIdentifier: "musicPlayer", sender: self.searchResultArray[indexPath.row]);
