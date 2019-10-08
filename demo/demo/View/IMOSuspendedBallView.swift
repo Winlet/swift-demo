@@ -70,8 +70,8 @@ class IMOSuspendedBallView: UIView,UIGestureRecognizerDelegate{
         self.timeLable?.text = String.init(format: "%d/%d",self.currentNumber,self.totalCount);
     }
     
-    public func progress(p:CGFloat){
-        self.waveHeight = p;
+    public func progress(p:Double){
+        self.waveHeight = CGFloat(p)*self.frame.size.height;
     }
 //MARK:- init method
     private override init(frame: CGRect) {
@@ -141,7 +141,7 @@ class IMOSuspendedBallView: UIView,UIGestureRecognizerDelegate{
     @objc func currentWave()  {
         offsetX += waveSpeed
         if self.waveHeight<self.frame.size.height{
-            self.waveHeight += 0.1;
+//            self.waveHeight += 0.1;
         }else{
             if self.currentNumber<self.totalCount-1 {
                 self.waveHeight = 0;

@@ -76,7 +76,10 @@ class NetworkManager: NSObject {
             switch response.result{
             case .success(let dataResult):
                 let dataDic = (dataResult as! NSDictionary)["result"] as! NSDictionary;
-                let listMusic = Music().transfrom163Music(dic: dataDic);
+                var listMusic = NSMutableArray();
+                if dataDic.count != 0{
+                 listMusic = Music().transfrom163Music(dic: dataDic);
+                }
                 suc(listMusic);
             case .failure(let error):
                 err(error as NSError);
@@ -98,10 +101,10 @@ class NetworkManager: NSObject {
     
     class func getLyricFromQQMusic(music:Music) {
         /* 部分无歌词 */
-        //        let temp = String(format: "%d/%@.xml", Int(music.songID!)!%100,music.songID!)
-        //        let httpRequest = "http://music.qq.com/miniportal/static/lyric/" + temp;
+                let temp = String(format: "%d/%@.xml", Int(music.songID!)!%100,music.songID!)
+                let httpRequest = "http://music.qq.com/miniportal/static/lyric/" + temp;
         /*私人 api*/
-        let httpRequest = "https://v1.itooi.cn/tencent/lrc?id=\(music.songMid!)";
+//        let httpRequest = "https://v1.itooi.cn/tencent/lrc?id=\(music.songMid!)";
         Alamofire.request(httpRequest).response { (response) in
             if response.error == nil{
                 let name = music.name! + "-" + music.songMid! + ".mp3";

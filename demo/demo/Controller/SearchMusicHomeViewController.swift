@@ -101,13 +101,12 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let vc = PlayMuiscViewController();
         let  music = self.searchResultArray[indexPath.row] as? Music;
- 
+        IMOSuspendedBallView.shared.addNum();
         DownloadManager().download(music: music!,progerss:{ (precent) in
             IMOSuspendedBallView.shared.progress(p: precent);
         }, suc: {
-//            music?.songList ;
+
             StoreManager.insertMusic(by: music!);
-            print("--------+-+-------");
         }) { (error) in
             print(error);
         }
@@ -123,7 +122,6 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
         case 1:fromType = .NTESMusic; break
             
         case 2:
-           IMOSuspendedBallView.shared.addNum();
         break
         default:
             break;

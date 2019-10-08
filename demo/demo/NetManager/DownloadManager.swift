@@ -9,31 +9,30 @@
 import UIKit
 import Alamofire
 
-class DownloadManager: NSObject {
+class DownloadManager: Operation {
     
-    func download(music:Music,progerss:@escaping (CGFloat)->Void ,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
+    func download(music:Music,progerss:@escaping (Double)->Void ,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
         
         switch music.comeType{
         case .QQMusic?:
-            self.downloadFromQQMusic(mid: music.songMid!, name: music.name!, suc: suc, err: err);
+            self.downloadFromQQMusic(mid: music.songMid!, name: music.name!, progerss: progerss, suc: suc, err: err);
             break
         case .NTESMusic?:
-            self.downloadFrom163Music(id: music.songID!, name: music.name!, suc: suc, err: err);
+            self.downloadFrom163Music(id: music.songID!, name: music.name!, progerss: progerss,suc: suc, err: err);
             break
         default: break
         }
        
-        
     }
     
     
-    func downloadFromQQMusic(mid:String,name:String,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
+    func downloadFromQQMusic(mid:String,name:String,progerss:@escaping (Double)->Void ,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
         
         /*私人api 存在日后维护问题*/
-        let uuid = name + "-" + mid;
-        let downloadUrl = "https://v1.itooi.cn/tencent/url?id=\(mid)&quality=128"
-        self.downloadSongForUrl(requestUrl: downloadUrl, name: uuid, suc: suc, err: err);
-        return;
+//        let uuid = name + "-" + mid;
+//        let downloadUrl = "https://v1.itooi.cn/tencent/url?id=\(mid)&quality=128"
+//        self.downloadSongForUrl(requestUrl: downloadUrl, name: uuid, progerss: progerss, suc: suc, err: err);
+//        return;
         /*原方法 部分歌曲无法下载
          但它是通用官方的api
          */
@@ -49,7 +48,7 @@ class DownloadManager: NSObject {
                 //file type wrong ...vkey 为空
                 let downloadUrl = "http://dl.stream.qqmusic.qq.com/\(filename)?vkey=\(vkey ?? "" )&guid=\(guid)&uin=0&fromtag=66";
                 let uuid = name + "-" + mid;
-                self.downloadSongForUrl(requestUrl: downloadUrl, name: uuid, suc: suc, err: err);
+                self.downloadSongForUrl(requestUrl: downloadUrl, name: uuid, progerss: progerss, suc: suc, err: err);
             case .failure(let error):
                 err(error);
             }
@@ -57,13 +56,13 @@ class DownloadManager: NSObject {
         return;
     }
     
-    func downloadFrom163Music(id:String,name:String,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
+    func downloadFrom163Music(id:String,name:String,progerss:@escaping (Double)->Void ,suc:@escaping ()->Void,err:@escaping (Error)->Void) {
         let downloadUrl = "http://music.163.com/song/media/outer/url?id=" + id + ".mp3";
         let uuid = name + "-" + id;
-        self.downloadSongForUrl(requestUrl: downloadUrl, name: uuid, suc: suc, err: err);
+        self.downloadSongForUrl(requestUrl: downloadUrl, name: uuid, progerss: progerss, suc: suc, err: err);
     }
     
-    public func downloadSongForUrl(requestUrl:String,name:String, suc:@escaping ()->Void , err:@escaping (Error)->Void){
+    public func downloadSongForUrl(requestUrl:String,name:String,progerss:@escaping (Double)->Void,suc:@escaping ()->Void , err:@escaping (Error)->Void){
         
         let  fileManager = FileManager.default
         
@@ -89,9 +88,13 @@ class DownloadManager: NSObject {
         Alamofire.download(requestUrl, to: destination).response { response in // method defaults to `.get`
             if response.error != nil{
                 err(response.error!);
+                progerss(1);
             }else{
                 suc();
+                progerss(1);
             }
+            }.downloadProgress { (Progress) in
+                progerss(Progress.fractionCompleted);
         }
     }
 }
