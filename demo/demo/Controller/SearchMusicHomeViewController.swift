@@ -120,8 +120,10 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
         case 0: fromType = .QQMusic;break
             
         case 1:fromType = .NTESMusic; break
-            
-        case 2:
+        
+        case 2:fromType = .KuGouMusic; break
+        
+        case 3:
         break
         default:
             break;

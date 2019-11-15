@@ -29,4 +29,15 @@ class Singers: Object {
         return result;
     }
     
+    func initFrom(name:String,id:String) -> List<Singers> {
+        var listArray = [Singers]();
+       
+            let Singer = Singers();
+            Singer.singerID = id;
+            Singer.name = name;
+            listArray.append(Singer);
+        let result = List<Singers>();
+        result.append(objectsIn: listArray);
+        return result;
+    }
 }

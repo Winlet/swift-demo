@@ -86,6 +86,22 @@ class Music: Object {
         }
         return listArray;
     }
+    func transfromKuGouMusic(dic:NSDictionary) ->NSMutableArray{
+        
+        let listArray = NSMutableArray();
+        let list = dic["info"] as!NSArray;
+        for song in list {
+            let music = Music();
+            music.comeType = .KuGouMusic;
+            music.songID = (song as! NSDictionary).object(forKey: "hash") as? String  ;
+            music.name = (song as! NSDictionary).object(forKey: "songname_original") as? String;
+            music.songUrl = (song as! NSDictionary).object(forKey: "hash") as? String;
+            music.singer = Singers().initFrom(name: ((song as! NSDictionary).object(forKey: "singername") as! String), id: (song as! NSDictionary).object(forKey: "songname") as! String)
+            music.localPath = music.name! + "-" + music.songID! + ".mp3";
+            listArray.add(music);
+        }
+        return listArray;
+    }
 }
 
 

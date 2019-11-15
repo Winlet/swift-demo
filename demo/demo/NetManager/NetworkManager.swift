@@ -41,6 +41,14 @@ class NetworkManager: NSObject {
             break;
 //        default:
 //            break;
+        case .KuGouMusic:
+            self.searchSongFromKuGouMusic(keyword: word, suc: { (listMusic) in
+            for music in listMusic{
+                print((music as! Music).name!);
+            }
+            suc(listMusic);
+            }, err: err);
+            break;
         }
         
         
@@ -79,6 +87,25 @@ class NetworkManager: NSObject {
                 var listMusic = NSMutableArray();
                 if dataDic.count != 0{
                  listMusic = Music().transfrom163Music(dic: dataDic);
+                }
+                suc(listMusic);
+            case .failure(let error):
+                err(error as NSError);
+            }
+        }
+    }
+    
+    func searchSongFromKuGouMusic(keyword word:String,suc:@escaping (NSMutableArray)->Void,err:@escaping (NSError)->Void) {
+        
+        let wordTemp = Util.urlEncoded(string: word);
+        let httpRequest = "http://mobilecdn.kugou.com/api/v3/search/song?format=json&keyword=\(wordTemp)&page=1&pagesize=20&showtype=1";
+        Alamofire.request(httpRequest).responseJSON{ (response) in
+            switch response.result{
+            case .success(let dataResult):
+                let dataDic = (dataResult as! NSDictionary)["data"] as! NSDictionary;
+                var listMusic = NSMutableArray();
+                if dataDic.count != 0{
+                 listMusic = Music().transfromKuGouMusic(dic: dataDic);
                 }
                 suc(listMusic);
             case .failure(let error):

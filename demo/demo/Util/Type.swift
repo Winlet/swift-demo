@@ -21,6 +21,8 @@ public enum MusicFromType : Int {
     case QQMusic = 100
     /* 网易云音乐*/
     case NTESMusic = 101
+    /* 酷狗**/
+    case KuGouMusic = 102
 }
 
 public enum MusicModeType : Int {
