@@ -15,6 +15,7 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
     //    var musicShowArray = NSMutableArray();
     var fromType = 1;
     var lazyClear = true;
+    var songListName:String = "loop";
     
     lazy var allTableView : UITableView = {
         let temp = UITableView.init(frame: CGRect.init(x: 0, y:0, width: 100, height: 100));
@@ -39,7 +40,8 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         }else{
             self.headView.isHidden = false;
             self.allTableView.isHidden = true;
-            return StoreManager.getLoopMusic();
+                return StoreManager.getListMusic(name: self.songListName);
+            
         }
         
     }()
@@ -49,7 +51,7 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         get{
             if lazyClear {
                 lazyClear = false;
-                allMusicATemp = StoreManager.getLastLoopMusic()
+                allMusicATemp = StoreManager.getLastListMusic(name: self.songListName);
                 return allMusicATemp;
             }else{
                 return allMusicATemp;
@@ -156,8 +158,7 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         if fromType != 1 {
             if self.allTableView.isHidden == false {
                 self.allTableView.isHidden = true;
-                let res = StoreManager.writeToLoopMusic(list: self.musicShowArray);
-                print(res);
+                   _ = StoreManager.writeToListMusic(name:self.songListName, list: self.musicShowArray);
             }
         }
     }
@@ -167,8 +168,8 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         self.tableView.reloadData();
         
         lazyClear = true;
+            StoreManager.clearListMusic(name: self.songListName);
         
-        StoreManager.clearLoopMusic();
     }
     
     @IBAction func addAction(_ sender: UIButton) {

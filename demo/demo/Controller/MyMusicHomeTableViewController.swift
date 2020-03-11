@@ -105,7 +105,10 @@ class MyMusicHomeTableViewController: UITableViewController {
             vc.fromType = indexPath.row + 1;
              self.navigationController?.pushViewController(vc, animated: true);
         case 1:
-            NSLog("asd");
+            let vc = storyboard?.instantiateViewController(withIdentifier: "localMVC") as! LocalMusicViewController;
+            vc.fromType = 3;
+            vc.songListName = self.bottomShowArray[indexPath.row];
+             self.navigationController?.pushViewController(vc, animated: true);
         default:
             break;
         }
