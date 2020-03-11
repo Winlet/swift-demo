@@ -19,13 +19,29 @@ class MyMusicHomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
-
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
    
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated);
+//        self.hidesBottomBarWhenPushed = false;
+//    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated);
+//        self.hidesBottomBarWhenPushed = false;
+//    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated);
+//        self.hidesBottomBarWhenPushed = true;
+//    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated);
+//        self.hidesBottomBarWhenPushed = true;
+//    }
     // MARK: - initUI
     func initUI() {
         self.title = "音乐"
@@ -102,11 +118,13 @@ class MyMusicHomeTableViewController: UITableViewController {
         case 0:
             let vc = storyboard?.instantiateViewController(withIdentifier: "localMVC") as! LocalMusicViewController;
             vc.fromType = indexPath.row + 1;
+            vc.hidesBottomBarWhenPushed = true;
              self.navigationController?.pushViewController(vc, animated: true);
         case 1:
             let vc = storyboard?.instantiateViewController(withIdentifier: "localMVC") as! LocalMusicViewController;
             vc.fromType = 3;
             vc.songListName = self.bottomShowArray[indexPath.row];
+            vc.hidesBottomBarWhenPushed = true;
              self.navigationController?.pushViewController(vc, animated: true);
         default:
             break;

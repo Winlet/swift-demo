@@ -67,6 +67,10 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+//            self.tabBar.hidden = true;
+    }
     func initUI() {
         self.title = "歌单列表";
         self.tableView.delegate = self;

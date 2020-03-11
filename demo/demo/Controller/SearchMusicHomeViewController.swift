@@ -31,7 +31,7 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+  
     // MARK: - initUI
     func initUI() {
         self.title = "搜索";
