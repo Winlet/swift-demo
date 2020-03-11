@@ -34,7 +34,6 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
 
     // MARK: - initUI
     func initUI() {
-        self.titleItem.title = "搜索";
         self.title = "搜索";
         self.tableview.tableFooterView = UIView();
         self.searchBar.delegate = self;
@@ -105,7 +104,7 @@ class SearchMusicHomeViewController: UIViewController,UITableViewDelegate,UITabl
         DownloadManager().download(music: music!,progerss:{ (precent) in
             IMOSuspendedBallView.shared.progress(p: precent);
         }, suc: {
-
+            NetworkManager.getLyricFromMusic(music: music!);
             StoreManager.insertMusic(by: music!);
         }) { (error) in
             print(error);

@@ -68,6 +68,7 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func initUI() {
+        self.title = "歌单列表";
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.tableFooterView = UIView.init();

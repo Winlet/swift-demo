@@ -28,9 +28,8 @@ class MyMusicHomeTableViewController: UITableViewController {
     }
     // MARK: - initUI
     func initUI() {
+        self.title = "音乐"
         self.tableView.tableFooterView = UIView();
-        self.titleItem.title = "我的音乐";
-        self.title = "我的音乐";
 //        bottomShowArray.add("敬请期待...");
         bottomShowArray = LocalFileManager.readSongList();
     }

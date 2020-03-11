@@ -45,6 +45,7 @@ class PlayMuiscViewController: UIViewController {
         
     }
     func setup() {
+        self.title = self.music.name;
         MusicPlayer.playMusic(Define.rootPath + "/" + self.music.localPath!);
         duration = Float(MusicPlayer.duration());
         self.endTimeLabel.text = self.dateFromTime(time:MusicPlayer.duration());
