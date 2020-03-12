@@ -56,10 +56,9 @@ class MusicPlayer: NSObject {
         
         return false
     }
-    class func playTo(time:TimeInterval) {
-        
+    class func playTo(time:Double) {
         if let player = shared.player {
-           
+            player.currentTime = time;
         }
     }
     class func resumePlayer() {

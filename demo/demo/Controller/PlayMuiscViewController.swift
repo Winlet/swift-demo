@@ -23,7 +23,7 @@ class PlayMuiscViewController: UIViewController {
     
     @IBOutlet weak var lycirTextView: UITextView!
     var timer : Timer?
-    var duration : Float?
+    var duration : TimeInterval?
     var playMode : Int!;
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class PlayMuiscViewController: UIViewController {
     func setup() {
         self.title = self.music.name;
         MusicPlayer.playMusic(Define.rootPath + "/" + self.music.localPath!);
-        duration = Float(MusicPlayer.duration());
+        duration = MusicPlayer.duration();
         self.endTimeLabel.text = self.dateFromTime(time:MusicPlayer.duration());
         index = playList?.firstIndex(of: music);
 
@@ -89,7 +89,7 @@ class PlayMuiscViewController: UIViewController {
     @objc func updataSecond() {
         
         let time = MusicPlayer.currentTime();
-        self.progressSlider!.value = Float(time)/duration!;
+        self.progressSlider!.value = Float(time)/Float(duration!);
         self.startTimeLabel.text = self.dateFromTime(time: time);
 
     }
@@ -104,10 +104,8 @@ class PlayMuiscViewController: UIViewController {
 
     //MARK: Action
     @IBAction func switchProgress(_ sender: UISlider) {
-        //暂无功能
-//        let seconds = Int64(sender.value * duration!);
-//        let targetTime = CMTimeMake(seconds, Int32(duration!))
-//        MusicPlayer.playTo(time: CMTimeGetSeconds(targetTime));
+        let seconds = Double(sender.value) * (duration ?? 0);
+        MusicPlayer.playTo(time:seconds);
     }
     @IBAction func switchMode(_ sender: UIButton) {
         let userDefault = UserDefaults.standard
