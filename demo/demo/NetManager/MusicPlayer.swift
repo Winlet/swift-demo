@@ -11,7 +11,13 @@ import AVFoundation
 
 class MusicPlayer: NSObject {
     
-    static let shared = MusicPlayer()
+    static let shared: MusicPlayer = {
+        let shared = MusicPlayer()
+        // setup code
+        return shared
+    }()
+    
+//    static let shared = MusicPlayer()
     
     fileprivate var player:AVAudioPlayer?
     
@@ -110,5 +116,10 @@ extension MusicPlayer:AVAudioPlayerDelegate {
         NotificationCenter.default.post(name:NSNotification.Name(rawValue: MusicPlayState.MusicPlayCompletedKey.rawValue), object: nil)
         
     }
+    
+}
+
+extension MusicPlayer{
+        
 }
 

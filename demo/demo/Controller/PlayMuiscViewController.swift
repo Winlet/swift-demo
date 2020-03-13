@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMedia
+import AVFoundation
 
 class PlayMuiscViewController: UIViewController {
     var music :Music!
@@ -34,9 +35,14 @@ class PlayMuiscViewController: UIViewController {
         let mode = UserDefaults.standard.integer(forKey: "UserModeKey");
         switchModeBtn(mode: mode%1000+1000);
         // 添加通知监听
-  
+        
         NotificationCenter.default.addObserver(self, selector: #selector(completePlayAction), name:  NSNotification.Name(rawValue: MusicPlayState.MusicPlayCompletedKey.rawValue), object: nil)
-     
+        //        NotificationCenter.default.addObserver(self, selector: #selector(InterruptionPlayAction), name:  NSNotification.Name(rawValue: MusicPlayState.MusicPlayInterruptionKey.rawValue), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(InterruptionPlayAction), name: .AVAudioSessionInterruption, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRouteChange), name: .AVAudioSessionRouteChange, object:nil);
+        
     }
     
     
@@ -50,7 +56,7 @@ class PlayMuiscViewController: UIViewController {
         duration = MusicPlayer.duration();
         self.endTimeLabel.text = self.dateFromTime(time:MusicPlayer.duration());
         index = playList?.firstIndex(of: music);
-
+        
         var urlStr = "";
         switch music.comeType{
         case .QQMusic?:
@@ -61,7 +67,7 @@ class PlayMuiscViewController: UIViewController {
             break
         default: break
         }
-      
+        
         parseLyricWithUrl(urlString: urlStr, succeed: { (result) -> () in
             var lyricStr = ""
             for  lyric in result! {
@@ -91,9 +97,9 @@ class PlayMuiscViewController: UIViewController {
         let time = MusicPlayer.currentTime();
         self.progressSlider!.value = Float(time)/Float(duration!);
         self.startTimeLabel.text = self.dateFromTime(time: time);
-
+        
     }
-
+    
     // 4.停止计时
     func stopTimer() {
         if timer != nil {
@@ -101,7 +107,7 @@ class PlayMuiscViewController: UIViewController {
             timer = nil
         }
     }
-
+    
     //MARK: Action
     @IBAction func switchProgress(_ sender: UISlider) {
         let seconds = Double(sender.value) * (duration ?? 0);
@@ -133,13 +139,17 @@ class PlayMuiscViewController: UIViewController {
         sender.isSelected = !sender.isSelected;
         if sender.isSelected {
             self.startTimer();
-                MusicPlayer.resumePlayer();
-
+            MusicPlayer.resumePlayer();
+            
         }else{
             MusicPlayer.pausePlayer();
             self.stopTimer();
         }
         
+    }
+    func stopPlay() {
+        self.playBtn.isSelected = false;
+        MusicPlayer.pausePlayer();
     }
     @IBAction func nextSong(_ sender: UIButton) {
         if index == playList!.count-1 {
@@ -155,10 +165,36 @@ class PlayMuiscViewController: UIViewController {
     @IBAction func musicList(_ sender: UIButton) {
         
     }
+    
+    
+    //MARK:状态变更
     @objc func completePlayAction()  {
         nextSong(UIButton());
-        print("--------+-+-------next");
     }
+    
+    @objc func InterruptionPlayAction(_ notification: Notification){
+        stopPlay();
+    }
+    
+    @objc func handleRouteChange(_ notification: Notification) {
+        
+        guard let userInfo = notification.userInfo,
+            let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+            let reason = AVAudioSession.RouteChangeReason(rawValue:reasonValue) else {
+                return
+        }
+        switch reason {
+        case .newDeviceAvailable:
+            // Handle new device available.
+            playSong(UIButton());
+        case .oldDeviceUnavailable:
+            // Handle old device removed.
+            stopPlay();
+        default: ()
+        }
+        
+    }
+    
     
     //MARK: private
     private func dateFromTime(time:TimeInterval) -> String {

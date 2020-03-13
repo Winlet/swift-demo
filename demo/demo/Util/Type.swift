@@ -37,6 +37,6 @@ public enum MusicModeType : Int {
 public enum MusicPlayState : String {
     /* 播放完成*/
     case MusicPlayCompletedKey = "playCompleted"
-
+    case MusicPlayInterruptionKey = "playInterruption";
     
 }
