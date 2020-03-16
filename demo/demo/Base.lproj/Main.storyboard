@@ -230,28 +230,30 @@
                                     <constraint firstItem="FR0-E8-B2W" firstAttribute="top" secondItem="sII-8n-dSd" secondAttribute="top" constant="7" id="uTH-fR-71g"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0AN-3n-eYi">
-                                <rect key="frame" x="32" y="70" width="311" height="422"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oCB-Qj-9fQ">
+                                <rect key="frame" x="16" y="70" width="343" height="422"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Puc-Xq-YdG" id="dr9-EC-t4Q"/>
+                                    <outlet property="delegate" destination="Puc-Xq-YdG" id="6XO-ho-MkG"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="sII-8n-dSd" firstAttribute="top" secondItem="0AN-3n-eYi" secondAttribute="bottom" constant="26" id="6ZB-7N-t91"/>
-                            <constraint firstItem="0AN-3n-eYi" firstAttribute="top" secondItem="Ehb-3v-u9t" secondAttribute="bottom" constant="26" id="7bL-r4-0f5"/>
+                            <constraint firstAttribute="trailing" secondItem="oCB-Qj-9fQ" secondAttribute="trailing" constant="16" id="2VF-0v-vLQ"/>
                             <constraint firstItem="sII-8n-dSd" firstAttribute="leading" secondItem="Iyg-Uu-Q1u" secondAttribute="leading" id="80s-nu-fu6"/>
+                            <constraint firstItem="oCB-Qj-9fQ" firstAttribute="leading" secondItem="Iyg-Uu-Q1u" secondAttribute="leading" constant="16" id="BtB-7g-5eb"/>
+                            <constraint firstItem="sII-8n-dSd" firstAttribute="top" secondItem="oCB-Qj-9fQ" secondAttribute="bottom" constant="26" id="Hbf-gd-woJ"/>
                             <constraint firstAttribute="trailing" secondItem="sII-8n-dSd" secondAttribute="trailing" id="ItW-bB-C9M"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0AN-3n-eYi" secondAttribute="trailing" constant="16" id="NK2-5J-RFV"/>
-                            <constraint firstItem="0AN-3n-eYi" firstAttribute="leading" secondItem="Iyg-Uu-Q1u" secondAttribute="leadingMargin" constant="16" id="bfy-Um-rtJ"/>
+                            <constraint firstItem="oCB-Qj-9fQ" firstAttribute="top" secondItem="Ehb-3v-u9t" secondAttribute="bottom" constant="26" id="R4i-OJ-iY2"/>
                             <constraint firstItem="nJo-7l-fpW" firstAttribute="top" secondItem="sII-8n-dSd" secondAttribute="bottom" id="leU-8i-3g8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="l3c-FB-tIs"/>
                     <connections>
                         <outlet property="endTimeLabel" destination="kEO-Yg-GRv" id="Din-e5-6Tl"/>
-                        <outlet property="lycirTextView" destination="0AN-3n-eYi" id="7D6-PS-94C"/>
+                        <outlet property="lyricTableView" destination="oCB-Qj-9fQ" id="yhy-1S-faq"/>
                         <outlet property="playBtn" destination="5Bn-dd-vn0" id="jle-7b-b1n"/>
                         <outlet property="playModeBtn" destination="jvh-fH-SJK" id="hHD-yL-JXZ"/>
                         <outlet property="progressSlider" destination="FR0-E8-B2W" id="XQR-yo-kxQ"/>

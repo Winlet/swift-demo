@@ -10,14 +10,9 @@ import UIKit
 import AVFoundation
 
 class MusicPlayer: NSObject {
-    
-    static let shared: MusicPlayer = {
-        let shared = MusicPlayer()
-        // setup code
-        return shared
-    }()
-    
 //    static let shared = MusicPlayer()
+    
+    weak var delegate : MusicDelegate?
     
     fileprivate var player:AVAudioPlayer?
     
@@ -25,7 +20,21 @@ class MusicPlayer: NSObject {
     fileprivate var isLoop:Bool = false
     /// 音量
     fileprivate var volume:Float = 1.0
-
+    
+    var currentTimeT:Float = 0 {
+        willSet {   //新值设置之前被调用
+            print("willSet的新值是\(newValue)")
+        }
+        didSet { //新值设置之后立即调用
+            print("didSet的新值是\(oldValue)")
+        }
+    }
+    ///单例
+    static let shared: MusicPlayer = {
+        let shared = MusicPlayer()
+        // setup code
+        return shared
+    }()
     /// 初始化播放器
     class func setupPlayer() {
         let session = AVAudioSession.sharedInstance()
@@ -46,13 +55,13 @@ class MusicPlayer: NSObject {
         
         let dat = try? Data.init(contentsOf: URL(fileURLWithPath:filePath));
         let player = try? AVAudioPlayer.init(data: dat!);
+        shared.player = player
         player?.numberOfLoops = 0
         player?.delegate = shared
         player?.numberOfLoops = shared.isLoop ? -1 : 0
         player?.volume = shared.volume
-        
-        shared.player = player
-        
+        shared.currentTimeT = Float(player?.currentTime ?? 0);
+//        player!.addObserver(shared, forKeyPath: "currentTime", options: .new, context: nil);
 //        if let result = player?.prepareToPlay() {
 //            if result {
 //                resumePlayer()
@@ -109,6 +118,19 @@ class MusicPlayer: NSObject {
     class func duration()->TimeInterval {
         return shared.player?.duration ?? 0;
     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        print("_____111");
+        if keyPath == "currentTime" {
+           if let value = change?[NSKeyValueChangeKey.newKey] as? Float {
+            if (self.delegate?.responds(to: Selector.init(("PlayTimeChange"))))! {
+                self.delegate?.PlayTimeChange(time: value);
+            }
+            }
+        }
+        
+    }
+    
 }
 
 extension MusicPlayer:AVAudioPlayerDelegate {
@@ -119,7 +141,7 @@ extension MusicPlayer:AVAudioPlayerDelegate {
     
 }
 
-extension MusicPlayer{
-        
+protocol MusicDelegate:NSObjectProtocol {
+    func PlayTimeChange(time:Float);
 }
 

@@ -10,7 +10,11 @@ import UIKit
 import CoreMedia
 import AVFoundation
 
-class PlayMuiscViewController: UIViewController {
+class PlayMuiscViewController: UIViewController ,MusicDelegate,UITableViewDelegate,UITableViewDataSource{
+    
+    
+    
+    
     var music :Music!
     var originList:Array<Music>?
     var index :Int!
@@ -22,16 +26,19 @@ class PlayMuiscViewController: UIViewController {
     @IBOutlet weak var playModeBtn: UIButton!
     @IBOutlet weak var playBtn: UIButton!
     
-    @IBOutlet weak var lycirTextView: UITextView!
+    @IBOutlet weak var lyricTableView: UITableView!
+    
     var timer : Timer?
     var duration : TimeInterval?
     var playMode : Int!;
-    
+    var lyricArray : Array<Lyric>?
+    //MARK:UI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1);
         playList = originList;
         self.setup();
+        MusicPlayer.shared.delegate = self;
         let mode = UserDefaults.standard.integer(forKey: "UserModeKey");
         switchModeBtn(mode: mode%1000+1000);
         // 添加通知监听
@@ -52,6 +59,8 @@ class PlayMuiscViewController: UIViewController {
     }
     func setup() {
         self.title = self.music.name;
+        self.lyricTableView.allowsSelection = false;
+        self.lyricTableView.separatorStyle = UITableViewCell.SeparatorStyle.none;
         MusicPlayer.playMusic(Define.rootPath + "/" + self.music.localPath!);
         duration = MusicPlayer.duration();
         self.endTimeLabel.text = self.dateFromTime(time:MusicPlayer.duration());
@@ -70,15 +79,17 @@ class PlayMuiscViewController: UIViewController {
         
         parseLyricWithUrl(urlString: urlStr, succeed: { (result) -> () in
             var lyricStr = ""
+            lyricArray = Array();
             for  lyric in result! {
                 let songLyric = lyric as! Lyric
                 let lyricLine = songLyric.text as String
+                lyricArray?.append(songLyric);
                 lyricStr = lyricStr.appendingFormat(lyricLine).appendingFormat("\n")
             }
             if lyricStr.isEmpty {
                 NetworkManager.getLyricFromMusic(music: self.music);
             }else{
-                self.lycirTextView.text = lyricStr;
+                lyricTableView.reloadData();
             }
         })
     }
@@ -95,9 +106,14 @@ class PlayMuiscViewController: UIViewController {
     @objc func updataSecond() {
         
         let time = MusicPlayer.currentTime();
-        self.progressSlider!.value = Float(time)/Float(duration!);
+        let ratio = Float(time)/Float(duration!);
+        self.progressSlider!.value = ratio;
         self.startTimeLabel.text = self.dateFromTime(time: time);
-        
+        var row = ceil(ratio*Float(self.lyricArray?.count ?? 0));
+        if Int(row) ==  self.lyricArray?.count && (Int(row) != 0){
+            row = Float((self.lyricArray?.count)! - 1);
+        }
+        self.lyricTableView.scrollToRow(at: IndexPath(row:Int(row), section: 0), at: .middle, animated: true);
     }
     
     // 4.停止计时
@@ -165,8 +181,22 @@ class PlayMuiscViewController: UIViewController {
     @IBAction func musicList(_ sender: UIButton) {
         
     }
+    //MARK:lyricTableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return lyricArray?.count ?? 0;
+    }
     
-    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell: UITableViewCell? = nil
+        cell = tableView.dequeueReusableCell(withIdentifier: "LyricCell")
+        if cell == nil{
+            cell = UITableViewCell.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: "LyricCell")
+        }
+        let lyric = self.lyricArray![indexPath.row];
+        cell?.textLabel?.text = lyric.text as String;
+        cell?.textLabel?.numberOfLines = 0 ;
+        return cell!;
+    }
     //MARK:状态变更
     @objc func completePlayAction()  {
         nextSong(UIButton());
@@ -195,7 +225,10 @@ class PlayMuiscViewController: UIViewController {
         
     }
     
-    
+    //MARK:Delegate
+    func PlayTimeChange(time: Float) {
+        print("_____",time);
+    }
     //MARK: private
     private func dateFromTime(time:TimeInterval) -> String {
         let date = Date.init(timeIntervalSince1970:time);
