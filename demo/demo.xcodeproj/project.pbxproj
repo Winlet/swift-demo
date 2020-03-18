@@ -30,6 +30,7 @@
 		967E858D22FD5C6F002E52DE /* MusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E858822FD5C6F002E52DE /* MusicListView.swift */; };
 		967E858E22FD5C6F002E52DE /* BehindLittleTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 967E858922FD5C6F002E52DE /* BehindLittleTitleTableViewCell.xib */; };
 		967E859022FD61B9002E52DE /* Lyric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E858F22FD61B9002E52DE /* Lyric.swift */; };
+		967FBB3F24221B62009E9DBA /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FBB3E24221B62009E9DBA /* MainNavigationController.swift */; };
 		96827DC822F1A20E00937C91 /* QQ api in Resources */ = {isa = PBXBuildFile; fileRef = 96827DC722F1A20D00937C91 /* QQ api */; };
 		9692B9DD22FABC070028ABAC /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692B9DC22FABC070028ABAC /* LocalFileManager.swift */; };
 		9696BA0522F3CD53005BC0C5 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696BA0422F3CD53005BC0C5 /* MusicPlayer.swift */; };
@@ -104,6 +105,7 @@
 		967E858822FD5C6F002E52DE /* MusicListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicListView.swift; sourceTree = "<group>"; };
 		967E858922FD5C6F002E52DE /* BehindLittleTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BehindLittleTitleTableViewCell.xib; sourceTree = "<group>"; };
 		967E858F22FD61B9002E52DE /* Lyric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyric.swift; sourceTree = "<group>"; };
+		967FBB3E24221B62009E9DBA /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		96827DC722F1A20D00937C91 /* QQ api */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "QQ api"; sourceTree = "<group>"; wrapsLines = 0; };
 		9692B9DC22FABC070028ABAC /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		9696BA0422F3CD53005BC0C5 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				04F2B42120649F2B00F642C3 /* SearchMusicHomeViewController.swift */,
 				04D9610B2105E854007E89B3 /* LocalMusicViewController.swift */,
 				04CC5DF0213D1D5F001D5FA7 /* PlayMuiscViewController.swift */,
+				967FBB3E24221B62009E9DBA /* MainNavigationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				967E859022FD61B9002E52DE /* Lyric.swift in Sources */,
 				04F2B42C2064ACDB00F642C3 /* StoreManager.swift in Sources */,
 				04D9610C2105E854007E89B3 /* LocalMusicViewController.swift in Sources */,
+				967FBB3F24221B62009E9DBA /* MainNavigationController.swift in Sources */,
 				9692B9DD22FABC070028ABAC /* LocalFileManager.swift in Sources */,
 				96A3F56E22F279970095FE9B /* Singers.swift in Sources */,
 				04076CDB2063525E00E9C8EE /* MyMusicHomeTableViewController.swift in Sources */,

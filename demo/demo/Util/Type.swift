@@ -6,7 +6,7 @@
 //  Copyright © 2019 U-NAS. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public enum Define {
     static let docPath = NSHomeDirectory() + "/Documents"
@@ -39,4 +39,9 @@ public enum MusicPlayState : String {
     case MusicPlayCompletedKey = "playCompleted"
     case MusicPlayInterruptionKey = "playInterruption";
     
+}
+public func ShowColor(value:Int) -> UIColor{
+
+    return UIColor.init(red:CGFloat(((Float)((value & 0xFF0000) >> 16))/255.0), green:CGFloat(((Float)((value & 0xFF00) >> 8))/255.0), blue: CGFloat(((Float)(value & 0xFF))/255.0), alpha:1)
+
 }

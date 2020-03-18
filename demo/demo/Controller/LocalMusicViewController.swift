@@ -12,6 +12,7 @@ import SnapKit
 class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate {
     @IBOutlet weak var headView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var rightBarItem: UIBarButtonItem!
     //    var musicShowArray = NSMutableArray();
     var fromType = 1;
     var lazyClear = true;
@@ -23,9 +24,10 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         temp.dataSource = self;
         temp.tableFooterView = UIView.init();
         temp.register(UINib.init(nibName: "BehindLittleTitleTableViewCell", bundle: nil), forCellReuseIdentifier: "listMusicCell")
-        temp.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1);
-        temp.layer.borderWidth = 0.5;
-        temp.layer.cornerRadius = 12;
+        temp.backgroundColor = ShowColor(value: 0xFFFDEC);
+        temp.separatorStyle = UITableViewCell.SeparatorStyle.none;
+//        temp.layer.borderWidth = 0.5;
+//        temp.layer.cornerRadius = 12;
         return temp;
     }()
     
@@ -33,12 +35,14 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
     lazy var musicShowArray : Array<Music> = {
         if fromType == 1 {
             self.headView.isHidden = true;
+            self.navigationItem.rightBarButtonItem = nil;
             self.tableView.snp.makeConstraints({ (make) in
-                make.top.equalTo(0);
+                make.bottom.equalTo(0);
             })
             return StoreManager.getAllMusic();
         }else{
             self.headView.isHidden = false;
+//            self.rightBarItem.customView?.isHidden = false;
             self.allTableView.isHidden = true;
                 return StoreManager.getListMusic(name: self.songListName);
             
@@ -117,6 +121,11 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
                 singerString.append(singer.name!);
             }
             let temp = singerString.joined(separator: "/");
+            if indexPath.row%2 == 0 {
+                cell.backgroundColor = UIColor.white;
+            }else{
+                cell.backgroundColor = ShowColor(value: 0xFFFDEC);
+            }
             
             (cell as! BehindLittleTitleTableViewCell).setInfo(title: music.name!, author:temp);
             return cell;
@@ -168,26 +177,27 @@ class LocalMusicViewController: UIViewController,UITableViewDelegate,UITableView
         }
     }
     
-    @IBAction func clearAllAction(_ sender: UIButton) {
+    @IBAction func clearAction(_ sender: UIBarButtonItem) {
         self.musicShowArray.removeAll();
         self.tableView.reloadData();
         
         lazyClear = true;
             StoreManager.clearListMusic(name: self.songListName);
-        
     }
+ 
     
     @IBAction func addAction(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
             self.view.addSubview(self.allTableView);
             self.allTableView.snp.makeConstraints({ (make) in
-                make.left.right.bottom.equalTo(0);
-                make.height.equalTo(400);
+                make.top.right.bottom.equalTo(0);
+                make.width.equalTo(250);
             })
             self.allTableView.isHidden = false;
             self.allTableView.reloadData();
         }, completion: nil);
     }
+
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if NSStringFromClass((touch.view?.classForCoder)!) == "UITableViewCellContentView" {
