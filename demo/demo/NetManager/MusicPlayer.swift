@@ -32,18 +32,33 @@ class MusicPlayer: NSObject {
     ///单例
     static let shared: MusicPlayer = {
         let shared = MusicPlayer()
+        UIApplication.shared.beginReceivingRemoteControlEvents();
         // setup code
         return shared
     }()
     /// 初始化播放器
     class func setupPlayer() {
-        let session = AVAudioSession.sharedInstance()
-        if #available(iOS 10.0, *) {
-            try? session.setCategory(AVAudioSessionCategoryPlayback, mode: AVAudioSessionModeDefault, options: [.mixWithOthers])
+//        let session = AVAudioSession.sharedInstance()
+//        if #available(iOS 10.0, *) {
+//            try? session.setCategory(AVAudioSessionCategoryPlayback, mode: AVAudioSessionModeDefault, options: [.mixWithOthers])
+//        }
+//
+//        try? session.setActive(true, with: [.notifyOthersOnDeactivation])
+//        if session.category == AVAudioSessionCategorySoloAmbient {
+//
+//        } else {
+//            try? session.setActive(false, with: AVAudioSessionSetActiveOptions.notifyOthersOnDeactivation)
+//            try? session.setCategory(AVAudioSessionCategorySoloAmbient, with: AVAudioSessionCategoryOptions())//默认模式
+//        }
+        //配置后台播放
+        let audioSession = AVAudioSession.sharedInstance()
+        if audioSession.category == AVAudioSessionCategoryPlayback {
+        } else {
+            try? audioSession.setActive(true, with: AVAudioSessionSetActiveOptions.notifyOthersOnDeactivation)
+            try? audioSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions())//取消混合和duck模式
         }
-        
-        try? session.setActive(true, with: [.notifyOthersOnDeactivation])
     }
+    
     
     /// 播放切换歌曲
     ///
@@ -120,7 +135,6 @@ class MusicPlayer: NSObject {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print("_____111");
         if keyPath == "currentTime" {
            if let value = change?[NSKeyValueChangeKey.newKey] as? Float {
             if (self.delegate?.responds(to: Selector.init(("PlayTimeChange"))))! {
