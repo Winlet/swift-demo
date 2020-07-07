@@ -402,6 +402,7 @@ class PlayMuiscViewController: UIViewController ,MusicDelegate,UITableViewDelega
         }
         self.music = playList![index];
         setup();
+        self.playBtn.isSelected = false;
         self.playSong(self.playBtn);
         
     }
@@ -431,6 +432,7 @@ class PlayMuiscViewController: UIViewController ,MusicDelegate,UITableViewDelega
         }
         self.music = playList![index];
         setup();
+        self.playBtn.isSelected = false;
         self.playSong(self.playBtn);
     }
     
