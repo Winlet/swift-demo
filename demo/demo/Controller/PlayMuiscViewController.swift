@@ -81,6 +81,9 @@ class PlayMuiscViewController: UIViewController ,MusicDelegate,UITableViewDelega
         case .NTESMusic?:
             urlStr = Define.lyricPath + "/" + self.music.name! + "-" + self.music.songID! + ".mp3"
             break
+        case .KuGouMusic?:
+            urlStr = Define.lyricPath + "/" + self.music.name! + "-" + self.music.songID! + ".mp3"
+            break
         default: break
             
             
@@ -336,6 +339,9 @@ class PlayMuiscViewController: UIViewController ,MusicDelegate,UITableViewDelega
                 self.startTimeLabel.text = self.dateFromTime(time: time);
                 var row = ceil(ratio*Float(self.lyricArray?.count ?? 0));
                 if Int(row) ==  self.lyricArray?.count && (Int(row) != 0){
+                    row = Float((self.lyricArray?.count)! - 1);
+                }
+                if Int(row) > self.lyricArray!.count {
                     row = Float((self.lyricArray?.count)! - 1);
                 }
                 self.lyricTableView.scrollToRow(at: IndexPath(row:Int(row), section: 0), at: .middle, animated: true);
