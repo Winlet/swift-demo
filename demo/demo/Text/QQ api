@@ -305,4 +305,7 @@ h.encText = b(h.encText, i),
 h.encSecKey = c(i, e, f),
 h
 }
+//汇总
 https://www.zhihu.com/question/348928857/answer/858421542
+//酷狗
+https://github.com/ecitlm/Kugou-api
