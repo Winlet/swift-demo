@@ -76,6 +76,7 @@ class DownloadManager: Operation {
                     switch response.result{
                     case .success(let dataResult):
                         let dataDic = (dataResult as! NSDictionary)["data"] as! NSDictionary;
+                        
                         let lyric = dataDic.object(forKey: "lyrics") as! NSString;//song_name//play_url
 //                        let name = dataDic.object(forKey: "song_name") as! String
                         let downloadUrl =  dataDic.object(forKey: "play_url") as! String
